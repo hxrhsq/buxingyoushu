@@ -1,0 +1,61 @@
+{
+  "checkedAt": "2026-11-25T03:29:41.079Z",
+  "city": "南京",
+  "firstStop": {
+    "name": "老门东",
+    "position": {
+      "lat": 32.011604,
+      "lng": 118.787645
+    }
+  },
+  "httpStatus": 200,
+  "ok": true,
+  "error": null,
+  "cost": {
+    "flyaiCalls": 1,
+    "amapWalkingCalls": 3,
+    "cacheHit": false
+  },
+  "hotels": [
+    {
+      "name": "南京花迹酒店·老门东店",
+      "address": "夫子庙 老门东 中营52号，瓦库餐厅对面,近三条营",
+      "price": "¥704",
+      "rate": "0",
+      "hasPhoto": true,
+      "walk": {
+        "distanceMeters": 90,
+        "durationMinutes": 1
+      },
+      "walkError": null
+    },
+    {
+      "name": "南京颐和芥子园",
+      "address": "陶家巷8号，夫子庙老门东景区内",
+      "price": "¥1593",
+      "rate": "4.00",
+      "hasPhoto": true,
+      "walk": {
+        "distanceMeters": 160,
+        "durationMinutes": 2
+      },
+      "walkError": null
+    },
+    {
+      "name": "南京老门东金陵文璟酒店(夫子庙店)",
+      "address": "南京市秦淮区夫子庙街道边营43号",
+      "price": "¥482",
+      "rate": "4.00",
+      "hasPhoto": true,
+      "walk": {
+        "distanceMeters": 182,
+        "durationMinutes": 2
+      },
+      "walkError": null
+    }
+  ],
+  "counters": {
+    "place": "33/40",
+    "walking": "115/200"
+  }
+}

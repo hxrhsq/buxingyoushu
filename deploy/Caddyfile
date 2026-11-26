@@ -1,0 +1,14 @@
+# 步行有数 · 华为云 Flexus 香港新机反代
+# 旧 ECS 不动；等本机三件验收通过后再把 DNS 切过来。
+travel.peiqirui.com {
+  encode gzip
+
+  # 所有请求原样转发到本机 Next.js standalone（含 /_AMapService 高德安全代理）。
+  # Next 内部已把 /_AMapService/* 改写到 /amap-proxy/*，Caddy 不需要也不能再改路径。
+  reverse_proxy 127.0.0.1:3000 {
+    # 智能体 SSE 长链：读/写超时给足（要求 ≥120 秒），并关闭缓冲，避免讲解被反代攒住。
+    read_timeout 300s
+    write_timeout 300s
+    flush_interval -1
+  }
+}

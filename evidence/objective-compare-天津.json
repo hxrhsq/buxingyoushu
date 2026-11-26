@@ -1,0 +1,226 @@
+{
+  "checkedAt": "2026-11-22T06:47:47.372Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "city": "天津",
+  "startKeyword": null,
+  "startName": "天津古文化街",
+  "categories": [
+    "文创街区"
+  ],
+  "paidColdRun": {
+    "place": 12,
+    "walking": 13
+  },
+  "objectivePhaseCalls": {
+    "place": 0,
+    "walking": 0
+  },
+  "baseline": {
+    "stops": 4,
+    "names": [
+      "天津古文化街",
+      "天津意大利风情旅游区",
+      "天津·金街",
+      "五大道"
+    ],
+    "totalWalkMeters": 5020,
+    "totalWalkMinutes": 68,
+    "totalMinutes": 208,
+    "maxLegMeters": 2194
+  },
+  "attempts": [
+    {
+      "label": "【B1 少走路（bias=walk_less，不设硬上限）】",
+      "revision": 2,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "天津古文化街"
+        ],
+        "totalWalkMeters": 1,
+        "totalWalkMinutes": 1,
+        "totalMinutes": 51,
+        "maxLegMeters": 1
+      },
+      "walkDeltaVsBaseline": -5019,
+      "diffLines": [
+        "v1 → v2：总步行 5.02 公里 → 1 米（少走 5.02 公里，−5.02 公里）",
+        "步行耗时 68 分钟 → 1 分钟（−67 分钟）；总时长 208 分钟 → 51 分钟（少花 157 分钟）",
+        "保留：天津古文化街",
+        "删掉：天津意大利风情旅游区、天津·金街、五大道",
+        "路段 天津古文化街 → 天津意大利风情旅游区：本次不再经过",
+        "路段 天津意大利风情旅游区 → 天津·金街：本次不再经过",
+        "路段 天津·金街 → 五大道：本次不再经过"
+      ]
+    },
+    {
+      "label": "【B2 少走路 + 总量 ≤3 公里】",
+      "revision": 3,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "天津古文化街"
+        ],
+        "totalWalkMeters": 1,
+        "totalWalkMinutes": 1,
+        "totalMinutes": 51,
+        "maxLegMeters": 1
+      },
+      "walkDeltaVsBaseline": 0,
+      "diffLines": [
+        "v2 → v3：总步行 1 米 → 1 米（步行不变 0 米，+0 米）",
+        "步行耗时 1 分钟 → 1 分钟（+0 分钟）；总时长 51 分钟 → 51 分钟（总耗时不变 0 分钟）",
+        "保留：天津古文化街"
+      ]
+    },
+    {
+      "label": "【C1 家庭流现状 + 单段 ≤900 米（目标仍是最多站）】",
+      "ok": false,
+      "code": "no-solution",
+      "route": null,
+      "newAmapCalls": 0,
+      "reason": "按当前条件最多只能排 1 个站（天津古文化街），少于半日游最少需要的 2 站。取消单段上限后能排到 4 站，说明是「一口气最多走 900 米」把站点压掉了。",
+      "explanation": null,
+      "suggestion": null
+    },
+    {
+      "label": "【C2 家庭流现状 + 总量 ≤3 公里（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 3,
+        "names": [
+          "天津古文化街",
+          "天津意大利风情旅游区",
+          "天津·金街"
+        ],
+        "totalWalkMeters": 2826,
+        "totalWalkMinutes": 39,
+        "totalMinutes": 149,
+        "maxLegMeters": 1464
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 2826,
+        "totalWalkMinutes": 39,
+        "limit": 3000,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 1464,
+        "segmentLimit": null,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 2826 米，在您定的 3000 米以内。",
+        "whyDropped": [
+          {
+            "id": "35114",
+            "name": "五大道",
+            "text": "保留「五大道」全程会走到 5020 米，超出你定的 3000 米，所以这次没排它。"
+          }
+        ],
+        "keptBecauseMust": [],
+        "withoutLimit": {
+          "totalWalkMeters": 5020,
+          "totalWalkMinutes": 68,
+          "stopCount": 4
+        },
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    }
+  ],
+  "walkFirst": {
+    "cap": 1465,
+    "stops": 2,
+    "names": [
+      "天津古文化街",
+      "天津意大利风情旅游区"
+    ],
+    "totalWalkMeters": 1465,
+    "totalWalkMinutes": 21,
+    "totalMinutes": 101,
+    "maxLegMeters": 1464,
+    "probes": [
+      {
+        "cap": 2610,
+        "ok": true,
+        "stops": 2,
+        "walk": 1465
+      },
+      {
+        "cap": 1404,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 2007,
+        "ok": true,
+        "stops": 2,
+        "walk": 1465
+      },
+      {
+        "cap": 1705,
+        "ok": true,
+        "stops": 2,
+        "walk": 1465
+      },
+      {
+        "cap": 1554,
+        "ok": true,
+        "stops": 2,
+        "walk": 1465
+      },
+      {
+        "cap": 1479,
+        "ok": true,
+        "stops": 2,
+        "walk": 1465
+      },
+      {
+        "cap": 1441,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 1460,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 1469,
+        "ok": true,
+        "stops": 2,
+        "walk": 1465
+      },
+      {
+        "cap": 1464,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 1466,
+        "ok": true,
+        "stops": 2,
+        "walk": 1465
+      },
+      {
+        "cap": 1465,
+        "ok": true,
+        "stops": 2,
+        "walk": 1465
+      }
+    ]
+  },
+  "counters": {
+    "afterVerify": 25,
+    "end": 25
+  }
+}

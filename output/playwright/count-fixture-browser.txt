@@ -1,0 +1,21 @@
+async (page) => {
+  const tripId = "trip_count_fixture_01";
+  const conditions = { role: "A", hard: { maxWalkMeters: 5000, latestEndMinutes: null, mustVisit: [], neverAccept: [] }, soft: { p0: "prefer", p2: "prefer", p3: "prefer", p6: "prefer" }, bias: "see_more" };
+  const names = ["断桥", "白堤", "曲院风荷", "三潭印月", "雷峰塔", "南宋御街", "乌龟潭"];
+  const state = { trip: { id: tripId, title: "候选计数验收（人工夹具）", city: "杭州", version: 0, knowledgeVersion: 0,
+    createdAt: new Date().toISOString(), expiresAt: new Date(Date.now() + 30 * 86400000).toISOString(),
+    members: { A: { role: "A", joinedAt: new Date().toISOString(), submitted: true }, B: null }, conditions: { A: conditions, B: null },
+    candidates: names.map((name, i) => ({ id: "p" + i, name, aliases: [], selected: i < 6, materialIds: [], flyai: null, amap: null, choices: [], identity: "pending", identityMeasuredAt: null })),
+    materials: [], plan: null, facts: null, quote: null, initialMeasured: false, incrementalWalking: 0 },
+    role: "A", jobs: [], invitation: { pending: false, expiresAt: null }, execution: { allowed: false, reason: "人工夹具：尚无核验路线。" } };
+  await page.route("**/api/trips/**", async (route) => {
+    const request = route.request(), url = new URL(request.url());
+    if (url.pathname === "/api/trips/" + tripId && request.method() === "GET") return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(state) });
+    if (url.pathname.endsWith("/conditions") && request.method() === "PUT") {
+      state.trip.conditions.A = request.postDataJSON().conditions; state.trip.version++;
+      return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify(state) });
+    }
+    return route.fulfill({ status: 409, contentType: "application/json", body: JSON.stringify({ error: "Fixture blocks all other operations; no paid provider called." }) });
+  });
+  await page.goto("http://127.0.0.1:3210/trips/" + tripId + "#token=offline-count-fixture-only");
+}

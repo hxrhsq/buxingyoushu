@@ -1,0 +1,243 @@
+{
+  "checkedAt": "2026-11-22T06:23:30.826Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "city": "扬州",
+  "startKeyword": null,
+  "startName": "扬州东关街",
+  "categories": [
+    "文创街区"
+  ],
+  "paidColdRun": {
+    "place": 12,
+    "walking": 39
+  },
+  "objectivePhaseCalls": {
+    "place": 0,
+    "walking": 0
+  },
+  "baseline": {
+    "stops": 4,
+    "names": [
+      "花局里街区",
+      "中国古琴第一街",
+      "东圈门",
+      "彩衣街"
+    ],
+    "totalWalkMeters": 2077,
+    "totalWalkMinutes": 27,
+    "totalMinutes": 167,
+    "maxLegMeters": 680
+  },
+  "attempts": [
+    {
+      "label": "【B1 少走路（bias=walk_less，不设硬上限）】",
+      "revision": 2,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "花局里街区"
+        ],
+        "totalWalkMeters": 410,
+        "totalWalkMinutes": 5,
+        "totalMinutes": 55,
+        "maxLegMeters": 410
+      },
+      "walkDeltaVsBaseline": -1667,
+      "diffLines": [
+        "v1 → v2：总步行 2.08 公里 → 410 米（少走 1.67 公里，−1.67 公里）",
+        "步行耗时 27 分钟 → 5 分钟（−22 分钟）；总时长 167 分钟 → 55 分钟（少花 112 分钟）",
+        "保留：花局里街区",
+        "删掉：中国古琴第一街、东圈门、彩衣街",
+        "路段 花局里街区 → 中国古琴第一街：本次不再经过",
+        "路段 中国古琴第一街 → 东圈门：本次不再经过",
+        "路段 东圈门 → 彩衣街：本次不再经过"
+      ]
+    },
+    {
+      "label": "【B2 少走路 + 总量 ≤3 公里】",
+      "revision": 3,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "花局里街区"
+        ],
+        "totalWalkMeters": 410,
+        "totalWalkMinutes": 5,
+        "totalMinutes": 55,
+        "maxLegMeters": 410
+      },
+      "walkDeltaVsBaseline": 0,
+      "diffLines": [
+        "v2 → v3：总步行 410 米 → 410 米（步行不变 0 米，+0 米）",
+        "步行耗时 5 分钟 → 5 分钟（+0 分钟）；总时长 55 分钟 → 55 分钟（总耗时不变 0 分钟）",
+        "保留：花局里街区"
+      ]
+    },
+    {
+      "label": "【C1 家庭流现状 + 单段 ≤900 米（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 4,
+        "names": [
+          "花局里街区",
+          "中国古琴第一街",
+          "东圈门",
+          "彩衣街"
+        ],
+        "totalWalkMeters": 2077,
+        "totalWalkMinutes": 27,
+        "totalMinutes": 167,
+        "maxLegMeters": 680
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 2077,
+        "totalWalkMinutes": 27,
+        "limit": null,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 680,
+        "segmentLimit": 900,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 2077 米（你没有设走路上限），步行约 27 分钟；最长一段走 680 米，在您定的单段 900 米以内。",
+        "whyDropped": [],
+        "keptBecauseMust": [],
+        "withoutLimit": null,
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    },
+    {
+      "label": "【C2 家庭流现状 + 总量 ≤3 公里（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 4,
+        "names": [
+          "花局里街区",
+          "中国古琴第一街",
+          "东圈门",
+          "彩衣街"
+        ],
+        "totalWalkMeters": 2077,
+        "totalWalkMinutes": 27,
+        "totalMinutes": 167,
+        "maxLegMeters": 680
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 2077,
+        "totalWalkMinutes": 27,
+        "limit": 3000,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 680,
+        "segmentLimit": null,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 2077 米，在您定的 3000 米以内。",
+        "whyDropped": [],
+        "keptBecauseMust": [],
+        "withoutLimit": {
+          "totalWalkMeters": 2077,
+          "totalWalkMinutes": 27,
+          "stopCount": 4
+        },
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    }
+  ],
+  "walkFirst": {
+    "cap": 778,
+    "stops": 2,
+    "names": [
+      "花局里街区",
+      "中国古琴第一街"
+    ],
+    "totalWalkMeters": 778,
+    "totalWalkMinutes": 10,
+    "totalMinutes": 90,
+    "maxLegMeters": 410,
+    "probes": [
+      {
+        "cap": 1138,
+        "ok": true,
+        "stops": 2,
+        "walk": 778
+      },
+      {
+        "cap": 668,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 903,
+        "ok": true,
+        "stops": 2,
+        "walk": 778
+      },
+      {
+        "cap": 785,
+        "ok": true,
+        "stops": 2,
+        "walk": 778
+      },
+      {
+        "cap": 726,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 755,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 770,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 777,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 781,
+        "ok": true,
+        "stops": 2,
+        "walk": 778
+      },
+      {
+        "cap": 779,
+        "ok": true,
+        "stops": 2,
+        "walk": 778
+      },
+      {
+        "cap": 778,
+        "ok": true,
+        "stops": 2,
+        "walk": 778
+      }
+    ]
+  },
+  "counters": {
+    "afterVerify": 51,
+    "end": 51
+  }
+}

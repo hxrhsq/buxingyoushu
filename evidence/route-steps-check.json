@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-11-25T03:45:41.601Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "script": "route-steps-check.mjs",
+  "total": 6,
+  "passed": 6,
+  "checks": [
+    {
+      "name": "路线里出现分段提示入口",
+      "ok": true,
+      "detail": "count=4"
+    },
+    {
+      "name": "展开后出现真实分段指示",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "分段里带分钟数",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "分段指示不是只有一条",
+      "ok": true,
+      "detail": "步行45米 / 步行212米 / 步行153米"
+    },
+    {
+      "name": "没有编造「轮椅可通行」",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "全程没有脚本报错",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "pageErrors": []
+}

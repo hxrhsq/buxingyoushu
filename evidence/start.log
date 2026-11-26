@@ -1,0 +1,7 @@
+▲ Next.js 16.4.2
+- Local:         http://localhost:3000
+- Network:       http://0.0.0.0:3000
+✓ Ready in 334ms
+✓ Running next.config.ts took 62ms
+[flyai] search-poi city=杭州 category=自然风光 exit=0 4203ms stdout=12640B spawnError=none
+[flyai] search-poi city=杭州 category=城市观光 exit=0 3783ms stdout=12235B spawnError=none

@@ -1,0 +1,55 @@
+{
+  "name": "xuxiake-ai-hangzhou",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test:accept": "node evidence/phase6-accept.mjs",
+    "test:negotiation": "node evidence/negotiation-unit.mjs",
+    "test:rules": "node evidence/negotiation-rules.mjs",
+    "test:plan-ai": "node --import ./evidence/register-alias.mjs evidence/plan-ai.mjs",
+    "test:snapshot": "node evidence/plan-persistence.mjs",
+    "test:guards": "node evidence/plan-guard-probe.mjs",
+    "test:editor": "node evidence/negotiation-editor.mjs",
+    "test:timezone": "node evidence/hangzhou-timezone.mjs",
+    "test:official-view": "node evidence/official-view-unit.mjs",
+    "test:verify-chain": "node evidence/verify-chain-unit.mjs",
+    "test:verification-view": "node evidence/verification-view.mjs",
+    "test:geometry-state": "node evidence/geometry-state-unit.mjs",
+    "test:plan-geometry": "node --import ./evidence/register-alias.mjs evidence/plan-geometry.mjs",
+    "test:source-evidence": "node --import ./evidence/register-alias.mjs evidence/source-evidence-unit.mjs",
+    "test:solo-resolve": "node --import ./evidence/register-alias.mjs evidence/solo-resolve-unit.mjs",
+    "test:offline": "node evidence/negotiation-unit.mjs && node evidence/negotiation-rules.mjs && node --import ./evidence/register-alias.mjs evidence/plan-ai.mjs && node evidence/plan-persistence.mjs && node evidence/negotiation-editor.mjs && node evidence/hangzhou-timezone.mjs && node evidence/official-view-unit.mjs && node evidence/verify-chain-unit.mjs && node evidence/verification-view.mjs && node evidence/geometry-state-unit.mjs && node --import ./evidence/register-alias.mjs evidence/plan-geometry.mjs && node --import ./evidence/register-alias.mjs evidence/source-evidence-unit.mjs && node --import ./evidence/register-alias.mjs evidence/solo-resolve-unit.mjs && node --import ./evidence/register-alias.mjs evidence/toilet-unit.mjs && node --import ./evidence/register-alias.mjs evidence/resolve-route-minutes-unit.mjs && node --import ./evidence/register-alias.mjs evidence/understand-unit.mjs && node evidence/office-name-unit.mjs",
+    "probe:bailian": "node --env-file=.env.local scripts/bailian-probe.mjs",
+    "probe:bailian:discover": "node --env-file=.env.local scripts/bailian-discover.mjs",
+    "probe:agent": "node scripts/agent-call.mjs",
+    "test:toilet": "node --import ./evidence/register-alias.mjs evidence/toilet-unit.mjs",
+    "test:resolve-route": "node --import ./evidence/register-alias.mjs evidence/resolve-route-minutes-unit.mjs",
+    "test:understand": "node --import ./evidence/register-alias.mjs evidence/understand-unit.mjs"
+  },
+  "dependencies": {
+    "@amap/amap-jsapi-loader": "^1.0.1",
+    "@fly-ai/flyai-cli": "^1.0.16",
+    "@types/qrcode": "^1.5.6",
+    "next": "16.4.2",
+    "qrcode": "^1.5.4",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.2",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

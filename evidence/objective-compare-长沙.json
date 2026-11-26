@@ -1,0 +1,236 @@
+{
+  "checkedAt": "2026-11-22T06:47:08.172Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "city": "长沙",
+  "startKeyword": null,
+  "startName": "太平街牌坊",
+  "categories": [
+    "文创街区"
+  ],
+  "paidColdRun": {
+    "place": 11,
+    "walking": 37
+  },
+  "objectivePhaseCalls": {
+    "place": 0,
+    "walking": 0
+  },
+  "baseline": {
+    "stops": 4,
+    "names": [
+      "太平街",
+      "坡子街",
+      "三王街",
+      "黄兴南路步行商业街"
+    ],
+    "totalWalkMeters": 1797,
+    "totalWalkMinutes": 24,
+    "totalMinutes": 164,
+    "maxLegMeters": 1040
+  },
+  "attempts": [
+    {
+      "label": "【B1 少走路（bias=walk_less，不设硬上限）】",
+      "revision": 2,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "太平街"
+        ],
+        "totalWalkMeters": 378,
+        "totalWalkMinutes": 5,
+        "totalMinutes": 55,
+        "maxLegMeters": 378
+      },
+      "walkDeltaVsBaseline": -1419,
+      "diffLines": [
+        "v1 → v2：总步行 1.80 公里 → 378 米（少走 1.42 公里，−1.42 公里）",
+        "步行耗时 24 分钟 → 5 分钟（−19 分钟）；总时长 164 分钟 → 55 分钟（少花 109 分钟）",
+        "保留：太平街",
+        "删掉：坡子街、三王街、黄兴南路步行商业街",
+        "路段 太平街 → 坡子街：本次不再经过",
+        "路段 坡子街 → 三王街：本次不再经过",
+        "路段 三王街 → 黄兴南路步行商业街：本次不再经过"
+      ]
+    },
+    {
+      "label": "【B2 少走路 + 总量 ≤3 公里】",
+      "revision": 3,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "太平街"
+        ],
+        "totalWalkMeters": 378,
+        "totalWalkMinutes": 5,
+        "totalMinutes": 55,
+        "maxLegMeters": 378
+      },
+      "walkDeltaVsBaseline": 0,
+      "diffLines": [
+        "v2 → v3：总步行 378 米 → 378 米（步行不变 0 米，+0 米）",
+        "步行耗时 5 分钟 → 5 分钟（+0 分钟）；总时长 55 分钟 → 55 分钟（总耗时不变 0 分钟）",
+        "保留：太平街"
+      ]
+    },
+    {
+      "label": "【C1 家庭流现状 + 单段 ≤900 米（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 3,
+        "names": [
+          "太平街",
+          "坡子街",
+          "三王街"
+        ],
+        "totalWalkMeters": 757,
+        "totalWalkMinutes": 10,
+        "totalMinutes": 120,
+        "maxLegMeters": 378
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 757,
+        "totalWalkMinutes": 10,
+        "limit": null,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 378,
+        "segmentLimit": 900,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 757 米（你没有设走路上限），步行约 10 分钟；最长一段走 378 米，在您定的单段 900 米以内。",
+        "whyDropped": [],
+        "keptBecauseMust": [],
+        "withoutLimit": null,
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    },
+    {
+      "label": "【C2 家庭流现状 + 总量 ≤3 公里（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 4,
+        "names": [
+          "太平街",
+          "坡子街",
+          "三王街",
+          "黄兴南路步行商业街"
+        ],
+        "totalWalkMeters": 1797,
+        "totalWalkMinutes": 24,
+        "totalMinutes": 164,
+        "maxLegMeters": 1040
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 1797,
+        "totalWalkMinutes": 24,
+        "limit": 3000,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 1040,
+        "segmentLimit": null,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 1797 米，在您定的 3000 米以内。",
+        "whyDropped": [],
+        "keptBecauseMust": [],
+        "withoutLimit": {
+          "totalWalkMeters": 1797,
+          "totalWalkMinutes": 24,
+          "stopCount": 4
+        },
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    }
+  ],
+  "walkFirst": {
+    "cap": 636,
+    "stops": 2,
+    "names": [
+      "太平街",
+      "坡子街"
+    ],
+    "totalWalkMeters": 636,
+    "totalWalkMinutes": 8,
+    "totalMinutes": 88,
+    "maxLegMeters": 378,
+    "probes": [
+      {
+        "cap": 998,
+        "ok": true,
+        "stops": 3,
+        "walk": 757
+      },
+      {
+        "cap": 598,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 798,
+        "ok": true,
+        "stops": 3,
+        "walk": 757
+      },
+      {
+        "cap": 698,
+        "ok": true,
+        "stops": 2,
+        "walk": 636
+      },
+      {
+        "cap": 648,
+        "ok": true,
+        "stops": 2,
+        "walk": 636
+      },
+      {
+        "cap": 623,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 635,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 641,
+        "ok": true,
+        "stops": 2,
+        "walk": 636
+      },
+      {
+        "cap": 638,
+        "ok": true,
+        "stops": 2,
+        "walk": 636
+      },
+      {
+        "cap": 636,
+        "ok": true,
+        "stops": 2,
+        "walk": 636
+      }
+    ]
+  },
+  "counters": {
+    "afterVerify": 48,
+    "end": 48
+  }
+}

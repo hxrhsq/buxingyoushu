@@ -1,0 +1,61 @@
+{
+  "checkedAt": "2026-11-25T03:29:47.421Z",
+  "city": "扬州",
+  "firstStop": {
+    "name": "花局里街区",
+    "position": {
+      "lat": 32.399125,
+      "lng": 119.444512
+    }
+  },
+  "httpStatus": 200,
+  "ok": true,
+  "error": null,
+  "cost": {
+    "flyaiCalls": 1,
+    "amapWalkingCalls": 3,
+    "cacheHit": false
+  },
+  "hotels": [
+    {
+      "name": "龙之悦民宿",
+      "address": "前安家巷92号1号楼301室",
+      "price": "¥139",
+      "rate": "0",
+      "hasPhoto": true,
+      "walk": {
+        "distanceMeters": 186,
+        "durationMinutes": 2
+      },
+      "walkError": null
+    },
+    {
+      "name": "晨光小筑",
+      "address": "扬州广陵区东关街道前安家巷33号",
+      "price": "¥161",
+      "rate": "0",
+      "hasPhoto": true,
+      "walk": {
+        "distanceMeters": 228,
+        "durationMinutes": 3
+      },
+      "walkError": null
+    },
+    {
+      "name": "扬州市广陵区东关街在家民宿",
+      "address": "扬州广陵区东关街前安家巷48号, 中国",
+      "price": "¥162",
+      "rate": "0",
+      "hasPhoto": true,
+      "walk": {
+        "distanceMeters": 234,
+        "durationMinutes": 3
+      },
+      "walkError": null
+    }
+  ],
+  "counters": {
+    "place": "33/40",
+    "walking": "118/200"
+  }
+}

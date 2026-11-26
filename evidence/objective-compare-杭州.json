@@ -1,0 +1,198 @@
+{
+  "checkedAt": "2026-11-21T10:18:15.050Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "categories": [
+    "文创街区"
+  ],
+  "paidColdRun": {
+    "place": 0,
+    "walking": 0
+  },
+  "objectivePhaseCalls": {
+    "place": 0,
+    "walking": 0
+  },
+  "baseline": {
+    "stops": 3,
+    "names": [
+      "大兜路历史文化街区",
+      "桥西直街",
+      "桥西历史街区"
+    ],
+    "totalWalkMeters": 7759,
+    "totalWalkMinutes": 103,
+    "totalMinutes": 213,
+    "maxLegMeters": 5570
+  },
+  "attempts": [
+    {
+      "label": "【B1 少走路（bias=walk_less，不设硬上限）】",
+      "revision": 2,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "西湖天地"
+        ],
+        "totalWalkMeters": 1453,
+        "totalWalkMinutes": 19,
+        "totalMinutes": 69,
+        "maxLegMeters": 1453
+      },
+      "walkDeltaVsBaseline": -6306,
+      "diffLines": [
+        "v1 → v2：总步行 7.76 公里 → 1.45 公里（少走 6.31 公里，−6.31 公里）",
+        "步行耗时 103 分钟 → 19 分钟（−84 分钟）；总时长 213 分钟 → 69 分钟（少花 144 分钟）",
+        "删掉：大兜路历史文化街区、桥西直街、桥西历史街区",
+        "新增：西湖天地",
+        "路段 杭州西湖风景名胜区-湖滨公园 → 大兜路历史文化街区：本次不再经过",
+        "路段 大兜路历史文化街区 → 桥西直街：本次不再经过",
+        "路段 桥西直街 → 桥西历史街区：本次不再经过",
+        "路段 杭州西湖风景名胜区-湖滨公园 → 西湖天地：本次新增实测"
+      ]
+    },
+    {
+      "label": "【B2 少走路 + 总量 ≤3 公里】",
+      "revision": 3,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "西湖天地"
+        ],
+        "totalWalkMeters": 1453,
+        "totalWalkMinutes": 19,
+        "totalMinutes": 69,
+        "maxLegMeters": 1453
+      },
+      "walkDeltaVsBaseline": 0,
+      "diffLines": [
+        "v2 → v3：总步行 1.45 公里 → 1.45 公里（步行不变 0 米，+0 米）",
+        "步行耗时 19 分钟 → 19 分钟（+0 分钟）；总时长 69 分钟 → 69 分钟（总耗时不变 0 分钟）",
+        "保留：西湖天地"
+      ]
+    },
+    {
+      "label": "【C1 家庭流现状 + 单段 ≤900 米（目标仍是最多站）】",
+      "ok": false,
+      "code": "hard-conflict",
+      "route": null,
+      "newAmapCalls": 0,
+      "reason": "已证实不可行：[A] 含「可行组合」的全部实测组合里，最长一段最短的一条也有 1.45 公里 连续步行，比本方单段上限 900 米 多 553 米。另有 6 种走法因超出补测策略（每站只测直线最近的 4 邻）没有实测依据，不在上述结论范围内。这里不放宽任何一方的硬条件，也不编造数据。步行上限只统计「起点→站1→……→最后站」这段高德实测链条，不含回程；景区内部的步行量高德不提供，我们也没有数据。每站停留时长是模拟值（默认 30 分钟）、全程余量 20 分钟是产品设定，两者都不是实测。飞猪与高德都没有返回门票价格，本项目没有任何来自数据的门票/价格字段，因此不构成预算保证。营业时间只按假定出发时间判定冲突，不是完整开放时间的保证。",
+      "explanation": null,
+      "suggestion": null
+    },
+    {
+      "label": "【C2 家庭流现状 + 总量 ≤3 公里（目标仍是最多站）】",
+      "ok": false,
+      "code": "no-solution",
+      "route": null,
+      "newAmapCalls": 0,
+      "reason": "按当前条件最多只能排 1 个站（西湖天地），少于半日游最少需要的 2 站。取消总步行上限后能排到 3 站，说明是「全程 3000 米」把站点压掉了。 放宽到 7759 米可以排 3 站（全程 7759 米）。",
+      "explanation": null,
+      "suggestion": {
+        "maxWalkMeters": 7759,
+        "stopCount": 3,
+        "totalWalkMeters": 7759,
+        "maxWalkMinutes": 103,
+        "totalWalkMinutes": 103
+      }
+    }
+  ],
+  "walkFirst": {
+    "cap": 3223,
+    "stops": 2,
+    "names": [
+      "西湖天地",
+      "南宋御街"
+    ],
+    "totalWalkMeters": 3223,
+    "totalWalkMinutes": 43,
+    "totalMinutes": 123,
+    "maxLegMeters": 1770,
+    "probes": [
+      {
+        "cap": 3979,
+        "ok": true,
+        "stops": 2,
+        "walk": 3223
+      },
+      {
+        "cap": 2089,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 3034,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 3506,
+        "ok": true,
+        "stops": 2,
+        "walk": 3223
+      },
+      {
+        "cap": 3270,
+        "ok": true,
+        "stops": 2,
+        "walk": 3223
+      },
+      {
+        "cap": 3152,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 3211,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 3240,
+        "ok": true,
+        "stops": 2,
+        "walk": 3223
+      },
+      {
+        "cap": 3225,
+        "ok": true,
+        "stops": 2,
+        "walk": 3223
+      },
+      {
+        "cap": 3218,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 3221,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 3223,
+        "ok": true,
+        "stops": 2,
+        "walk": 3223
+      },
+      {
+        "cap": 3222,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      }
+    ]
+  },
+  "counters": {
+    "afterVerify": 36,
+    "end": 36
+  }
+}

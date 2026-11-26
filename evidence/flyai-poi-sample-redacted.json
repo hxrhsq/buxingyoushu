@@ -1,0 +1,102 @@
+{
+  "checkedAt": "2026-11-22T08:11:02.011Z",
+  "command": "flyai \"search-poi\" \"--city-name\" \"杭州\" \"--category\" \"文创街区\"",
+  "paid": true,
+  "flyaiCalls": 1,
+  "durationMs": 1349,
+  "status": 0,
+  "message": "success",
+  "topKeys": [
+    "data",
+    "message",
+    "status",
+    "systemMessage"
+  ],
+  "dataKeys": [
+    "itemList"
+  ],
+  "itemCount": 10,
+  "itemKeys": [
+    "address",
+    "category",
+    "description",
+    "freePoiStatus",
+    "id",
+    "jumpUrl",
+    "latitude",
+    "listRank",
+    "longitude",
+    "mainPic",
+    "name",
+    "poiLevel",
+    "ticketInfo"
+  ],
+  "commissionKeywordHits": {
+    "commission": 3,
+    "jumpUrl": 10
+  },
+  "commissionPaths": [
+    {
+      "path": "$.data.itemList.7.ticketInfo.commissionMoneyYuan",
+      "value": "0.00"
+    },
+    {
+      "path": "$.data.itemList.7.ticketInfo.skuCommissionStruct",
+      "value": {
+        "5862381874118": {
+          "commissionMoneyYuan": "0.00",
+          "price": "0",
+          "rate": "0"
+        }
+      }
+    },
+    {
+      "path": "$.data.itemList.7.ticketInfo.skuCommissionStruct.5862381874118.commissionMoneyYuan",
+      "value": "0.00"
+    }
+  ],
+  "commissionSample": {
+    "address": "浙江省杭州市拱墅区拱宸桥街道桥西直街1号(拱宸桥西)",
+    "category": "文创街区",
+    "description": "桥西历史街区因位于拱宸桥西岸而得名。早在清朝同治年间是拱宸桥区繁盛的水陆码头。街…(共196字)",
+    "freePoiStatus": "NOT_FREE",
+    "id": "14305813",
+    "jumpUrl": "https://router.feizhu.com/multi/webview?url=‹35位›",
+    "latitude": "30.316781",
+    "listRank": null,
+    "longitude": "120.137752",
+    "mainPic": "https://img.alicdn.com/tfscom/TB18WhrfMvD8KJjy0FlSuugBFXa",
+    "name": "桥西历史街区",
+    "poiLevel": null,
+    "ticketInfo": {
+      "commissionMoneyYuan": "0.00",
+      "itemId": "868487316934",
+      "price": "¥0",
+      "priceDate": null,
+      "rate": "0",
+      "skuCommissionStruct": {
+        "5862381874118": {
+          "commissionMoneyYuan": "0.00",
+          "price": "0",
+          "rate": "0"
+        }
+      },
+      "ticketName": "门票 成人票"
+    }
+  },
+  "redactedFirstItem": {
+    "address": "浙江省杭州市上城区清波街道河坊街180号",
+    "category": "文创街区",
+    "description": "清河坊街位于杭州的吴山脚下，是杭州目前唯一保存较完好的旧城区，也是杭州最热闹的商…(共356字)",
+    "freePoiStatus": "FREE",
+    "id": "1886",
+    "jumpUrl": "https://router.feizhu.com/multi/webview?url=‹35位›",
+    "latitude": "30.239827",
+    "listRank": "杭州城市景观景点榜第3名",
+    "longitude": "120.169899",
+    "mainPic": "https://img.alicdn.com/tfscom/TB1jXBteILJ8KJjy0FnSuwFDpXa",
+    "name": "清河坊街",
+    "poiLevel": "4",
+    "ticketInfo": null
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "checkedAt": "2026-11-21T10:45:40.418Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "city": "苏州",
+  "startKeyword": "拙政园",
+  "startName": "拙政园",
+  "categories": [
+    "文创街区"
+  ],
+  "paidColdRun": {
+    "place": 1,
+    "walking": 4
+  },
+  "objectivePhaseCalls": {
+    "place": 0,
+    "walking": 0
+  },
+  "baseline": {
+    "stops": 3,
+    "names": [
+      "十全街",
+      "观前街",
+      "石路步行街"
+    ],
+    "totalWalkMeters": 7996,
+    "totalWalkMinutes": 106,
+    "totalMinutes": 216,
+    "maxLegMeters": 3291
+  },
+  "attempts": [
+    {
+      "label": "【B1 少走路（bias=walk_less，不设硬上限）】",
+      "revision": 2,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "观前街"
+        ],
+        "totalWalkMeters": 1999,
+        "totalWalkMinutes": 27,
+        "totalMinutes": 77,
+        "maxLegMeters": 1999
+      },
+      "walkDeltaVsBaseline": -5997,
+      "diffLines": [
+        "v1 → v2：总步行 8.00 公里 → 2.00 公里（少走 6.00 公里，−6.00 公里）",
+        "步行耗时 106 分钟 → 27 分钟（−79 分钟）；总时长 216 分钟 → 77 分钟（少花 139 分钟）",
+        "保留：观前街",
+        "删掉：十全街、石路步行街",
+        "顺序：观前街 从第 2 站到第 1 站",
+        "路段 拙政园 → 十全街：本次不再经过",
+        "路段 十全街 → 观前街：本次不再经过",
+        "路段 观前街 → 石路步行街：本次不再经过",
+        "路段 拙政园 → 观前街：本次新增实测"
+      ]
+    },
+    {
+      "label": "【B2 少走路 + 总量 ≤3 公里】",
+      "revision": 3,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "观前街"
+        ],
+        "totalWalkMeters": 1999,
+        "totalWalkMinutes": 27,
+        "totalMinutes": 77,
+        "maxLegMeters": 1999
+      },
+      "walkDeltaVsBaseline": 0,
+      "diffLines": [
+        "v2 → v3：总步行 2.00 公里 → 2.00 公里（步行不变 0 米，+0 米）",
+        "步行耗时 27 分钟 → 27 分钟（+0 分钟）；总时长 77 分钟 → 77 分钟（总耗时不变 0 分钟）",
+        "保留：观前街"
+      ]
+    },
+    {
+      "label": "【C1 家庭流现状 + 单段 ≤900 米（目标仍是最多站）】",
+      "ok": false,
+      "code": "hard-conflict",
+      "route": null,
+      "newAmapCalls": 0,
+      "reason": "已证实不可行：[A] 含「可行组合」的全部实测组合里，最长一段最短的一条也有 2.00 公里 连续步行，比本方单段上限 900 米 多 1.10 公里。另有 20 种走法因超出补测策略（每站只测直线最近的 4 邻）没有实测依据，不在上述结论范围内。这里不放宽任何一方的硬条件，也不编造数据。步行上限只统计「起点→站1→……→最后站」这段高德实测链条，不含回程；景区内部的步行量高德不提供，我们也没有数据。每站停留时长是模拟值（默认 30 分钟）、全程余量 20 分钟是产品设定，两者都不是实测。飞猪与高德都没有返回门票价格，本项目没有任何来自数据的门票/价格字段，因此不构成预算保证。营业时间只按假定出发时间判定冲突，不是完整开放时间的保证。",
+      "explanation": null,
+      "suggestion": null
+    },
+    {
+      "label": "【C2 家庭流现状 + 总量 ≤3 公里（目标仍是最多站）】",
+      "ok": false,
+      "code": "no-solution",
+      "route": null,
+      "newAmapCalls": 0,
+      "reason": "按当前条件最多只能排 1 个站（观前街），少于半日游最少需要的 2 站。取消总步行上限后能排到 3 站，说明是「全程 3000 米」把站点压掉了。 放宽到 7996 米可以排 3 站（全程 7996 米）。",
+      "explanation": null,
+      "suggestion": {
+        "maxWalkMeters": 7996,
+        "stopCount": 3,
+        "totalWalkMeters": 7996,
+        "maxWalkMinutes": 106,
+        "totalWalkMinutes": 106
+      }
+    }
+  ],
+  "walkFirst": {
+    "cap": 3969,
+    "stops": 2,
+    "names": [
+      "观前街",
+      "十全街"
+    ],
+    "totalWalkMeters": 3969,
+    "totalWalkMinutes": 53,
+    "totalMinutes": 133,
+    "maxLegMeters": 1999,
+    "probes": [
+      {
+        "cap": 4098,
+        "ok": true,
+        "stops": 2,
+        "walk": 3969
+      },
+      {
+        "cap": 2148,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 3123,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 3610,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 3854,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 3976,
+        "ok": true,
+        "stops": 2,
+        "walk": 3969
+      },
+      {
+        "cap": 3915,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 3945,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 3960,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 3968,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 3972,
+        "ok": true,
+        "stops": 2,
+        "walk": 3969
+      },
+      {
+        "cap": 3970,
+        "ok": true,
+        "stops": 2,
+        "walk": 3969
+      },
+      {
+        "cap": 3969,
+        "ok": true,
+        "stops": 2,
+        "walk": 3969
+      }
+    ]
+  },
+  "counters": {
+    "afterVerify": 33,
+    "end": 33
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "checkedAt": "2026-11-22T06:24:03.536Z",
+  "paid": false,
+  "network": "零网络：只加载本地 file:// 原型，不发任何请求",
+  "script": "mockup-city-picker-check.mjs",
+  "mockupFile": "docs/mockups/city-start-picker.html",
+  "total": 13,
+  "passed": 13,
+  "checks": [
+    {
+      "name": "默认上下文是青岛",
+      "ok": true,
+      "detail": "青岛 · 从劈柴院出发"
+    },
+    {
+      "name": "默认路线是 4 站且含真实站名",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "点「修改」弹出单问题弹层",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "三颗城市胶囊都在",
+      "ok": true,
+      "detail": "count=3"
+    },
+    {
+      "name": "切到苏州后起点只读显示平江路",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "苏州默认路线 3 站且含十全街",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "苏州少走路版 2 站且含观前街",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "苏州上限不可行写的是「排不出」",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "切到杭州路线含大兜路",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "杭州少走路版回到默认口径（切城重置）",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "冷跑提示写清次数与免费额度",
+      "ok": true,
+      "detail": "会真实调用高德约 11 + 25 = 36 次：免费额度、0 元、约半分钟。每小时上限 place 40 / walking 80，三城要在不同小时暖。不会用模拟结果冒充成功。"
+    },
+    {
+      "name": "确认后弹层收起",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "全程没有脚本报错",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "pageErrors": [],
+  "screenshot": {
+    "file": "evidence/mockup-city-picker.png",
+    "bytes": 118504
+  },
+  "knownLimits": "只验证原型自己的交互与文案；卡上的路线数字来自 objective-compare-*.json，原型本身不代表已实现进前端"
+}

@@ -1,0 +1,215 @@
+{
+  "checkedAt": "2026-11-22T06:51:54.792Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "city": "泉州",
+  "startKeyword": null,
+  "startName": "泉州西街",
+  "categories": [
+    "文创街区"
+  ],
+  "paidColdRun": {
+    "place": 12,
+    "walking": 37
+  },
+  "objectivePhaseCalls": {
+    "place": 0,
+    "walking": 0
+  },
+  "baseline": {
+    "stops": 4,
+    "names": [
+      "西街",
+      "泉府小鲤埕",
+      "中山中路",
+      "金鱼巷"
+    ],
+    "totalWalkMeters": 2699,
+    "totalWalkMinutes": 37,
+    "totalMinutes": 177,
+    "maxLegMeters": 1202
+  },
+  "attempts": [
+    {
+      "label": "【B1 少走路（bias=walk_less，不设硬上限）】",
+      "revision": 2,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "西街"
+        ],
+        "totalWalkMeters": 267,
+        "totalWalkMinutes": 4,
+        "totalMinutes": 54,
+        "maxLegMeters": 267
+      },
+      "walkDeltaVsBaseline": -2432,
+      "diffLines": [
+        "v1 → v2：总步行 2.70 公里 → 267 米（少走 2.43 公里，−2.43 公里）",
+        "步行耗时 37 分钟 → 4 分钟（−33 分钟）；总时长 177 分钟 → 54 分钟（少花 123 分钟）",
+        "保留：西街",
+        "删掉：泉府小鲤埕、中山中路、金鱼巷",
+        "路段 西街 → 泉府小鲤埕：本次不再经过",
+        "路段 泉府小鲤埕 → 中山中路：本次不再经过",
+        "路段 中山中路 → 金鱼巷：本次不再经过"
+      ]
+    },
+    {
+      "label": "【B2 少走路 + 总量 ≤3 公里】",
+      "revision": 3,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "西街"
+        ],
+        "totalWalkMeters": 267,
+        "totalWalkMinutes": 4,
+        "totalMinutes": 54,
+        "maxLegMeters": 267
+      },
+      "walkDeltaVsBaseline": 0,
+      "diffLines": [
+        "v2 → v3：总步行 267 米 → 267 米（步行不变 0 米，+0 米）",
+        "步行耗时 4 分钟 → 4 分钟（+0 分钟）；总时长 54 分钟 → 54 分钟（总耗时不变 0 分钟）",
+        "保留：西街"
+      ]
+    },
+    {
+      "label": "【C1 家庭流现状 + 单段 ≤900 米（目标仍是最多站）】",
+      "ok": false,
+      "code": "no-solution",
+      "route": null,
+      "newAmapCalls": 0,
+      "reason": "按当前条件最多只能排 1 个站（西街），少于半日游最少需要的 2 站。取消单段上限后能排到 4 站，说明是「一口气最多走 900 米」把站点压掉了。",
+      "explanation": null,
+      "suggestion": null
+    },
+    {
+      "label": "【C2 家庭流现状 + 总量 ≤3 公里（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 4,
+        "names": [
+          "西街",
+          "泉府小鲤埕",
+          "中山中路",
+          "金鱼巷"
+        ],
+        "totalWalkMeters": 2699,
+        "totalWalkMinutes": 37,
+        "totalMinutes": 177,
+        "maxLegMeters": 1202
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 2699,
+        "totalWalkMinutes": 37,
+        "limit": 3000,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 1202,
+        "segmentLimit": null,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 2699 米，在您定的 3000 米以内。",
+        "whyDropped": [],
+        "keptBecauseMust": [],
+        "withoutLimit": {
+          "totalWalkMeters": 2699,
+          "totalWalkMinutes": 37,
+          "stopCount": 4
+        },
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    }
+  ],
+  "walkFirst": {
+    "cap": 1469,
+    "stops": 2,
+    "names": [
+      "西街",
+      "泉府小鲤埕"
+    ],
+    "totalWalkMeters": 1469,
+    "totalWalkMinutes": 20,
+    "totalMinutes": 100,
+    "maxLegMeters": 1202,
+    "probes": [
+      {
+        "cap": 1449,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 2074,
+        "ok": true,
+        "stops": 2,
+        "walk": 1469
+      },
+      {
+        "cap": 1761,
+        "ok": true,
+        "stops": 2,
+        "walk": 1469
+      },
+      {
+        "cap": 1605,
+        "ok": true,
+        "stops": 2,
+        "walk": 1469
+      },
+      {
+        "cap": 1527,
+        "ok": true,
+        "stops": 2,
+        "walk": 1469
+      },
+      {
+        "cap": 1488,
+        "ok": true,
+        "stops": 2,
+        "walk": 1469
+      },
+      {
+        "cap": 1468,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 1478,
+        "ok": true,
+        "stops": 2,
+        "walk": 1469
+      },
+      {
+        "cap": 1473,
+        "ok": true,
+        "stops": 2,
+        "walk": 1469
+      },
+      {
+        "cap": 1470,
+        "ok": true,
+        "stops": 2,
+        "walk": 1469
+      },
+      {
+        "cap": 1469,
+        "ok": true,
+        "stops": 2,
+        "walk": 1469
+      }
+    ]
+  },
+  "counters": {
+    "afterVerify": 49,
+    "end": 49
+  }
+}

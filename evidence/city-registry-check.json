@@ -1,0 +1,65 @@
+{
+  "checkedAt": "2026-11-22T06:42:49.255Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "paid": false,
+  "script": "city-registry-check.mjs",
+  "total": 8,
+  "passed": 8,
+  "checks": [
+    {
+      "name": "服务端可达且报告当前城市名单",
+      "ok": true,
+      "detail": "默认起点关键词 湖滨公园"
+    },
+    {
+      "name": "未注册城市被挡在调用之前",
+      "ok": true,
+      "detail": "\"目前只支持杭州、苏州、青岛、扬州、无锡、绍兴、济南、广州、西安、长沙、天津，收到的 cityName 是「南京」。\""
+    },
+    {
+      "name": "报错文案是动态名单而不是写死杭州",
+      "ok": true,
+      "detail": "目前只支持杭州、苏州、青岛、扬州、无锡、绍兴、济南、广州、西安、长沙、天津，收到的 cityName 是「南京」。"
+    },
+    {
+      "name": "起点关键词超过 20 字 → 400",
+      "ok": true,
+      "detail": "\"startKeyword 需要是 1–20 个字的起点搜索关键词。\""
+    },
+    {
+      "name": "起点关键词含控制字符 → 400",
+      "ok": true,
+      "detail": "\"startKeyword 需要是 1–20 个字的起点搜索关键词。\""
+    },
+    {
+      "name": "起点关键词不是字符串 → 400（绝不能悄悄当成默认起点去真跑）",
+      "ok": true,
+      "detail": "\"startKeyword 需要是 1–20 个字的起点搜索关键词。\""
+    },
+    {
+      "name": "全空白起点 → 400",
+      "ok": true,
+      "detail": "\"startKeyword 需要是 1–20 个字的起点搜索关键词。\""
+    },
+    {
+      "name": "全程 0 新增高德调用",
+      "ok": true,
+      "detail": "place 0→0、walking 0→0"
+    }
+  ],
+  "countersBefore": {
+    "place": 0,
+    "walking": 0,
+    "pid": 22604
+  },
+  "countersAfter": {
+    "place": 0,
+    "walking": 0,
+    "pid": 22604
+  },
+  "newAmapCalls": {
+    "place": 0,
+    "walking": 0
+  },
+  "knownLimits": "只证明闸门与校验；不证明任何城市的路线可行性，那要各城自己冷跑（见 objective-compare-*.json）"
+}

@@ -1,0 +1,66 @@
+{
+  "checkedAt": "2026-11-25T13:31:21.001Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "paid": "济南核验一次 + 百炼讲解一次（真实调用）",
+  "script": "route-page-check.mjs",
+  "total": 11,
+  "passed": 11,
+  "checks": [
+    {
+      "name": "首屏就有「返回首页」",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "生成路线后出现「我到了」",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "路线页也有「返回首页」",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "讲解卡片不再显示「数字对账」",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "不再显示「内容不是飞猪或高德的原始数据」",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "不再显示「不是手机 GPS 定位」",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "仍保留「百炼 · 千问」徽标",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "点「返回首页」回到首屏",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "首屏不再残留「我到了」",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "首屏城市三选一重新出现",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "全程没有脚本报错",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "pageErrors": []
+}

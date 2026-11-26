@@ -1,0 +1,242 @@
+{
+  "checkedAt": "2026-11-22T06:44:32.310Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "city": "济南",
+  "startKeyword": null,
+  "startName": "曲水亭街35号院",
+  "categories": [
+    "文创街区"
+  ],
+  "paidColdRun": {
+    "place": 11,
+    "walking": 40
+  },
+  "objectivePhaseCalls": {
+    "place": 0,
+    "walking": 0
+  },
+  "baseline": {
+    "stops": 4,
+    "names": [
+      "东花墙子街",
+      "曲水亭街",
+      "芙蓉街",
+      "西更道街"
+    ],
+    "totalWalkMeters": 1011,
+    "totalWalkMinutes": 13,
+    "totalMinutes": 153,
+    "maxLegMeters": 471
+  },
+  "attempts": [
+    {
+      "label": "【B1 少走路（bias=walk_less，不设硬上限）】",
+      "revision": 2,
+      "status": "pending-review",
+      "route": {
+        "stops": 3,
+        "names": [
+          "东花墙子街",
+          "曲水亭街",
+          "后宰门街"
+        ],
+        "totalWalkMeters": 470,
+        "totalWalkMinutes": 6,
+        "totalMinutes": 116,
+        "maxLegMeters": 194
+      },
+      "walkDeltaVsBaseline": -541,
+      "diffLines": [
+        "v1 → v2：总步行 1.01 公里 → 470 米（少走 541 米，−541 米）",
+        "步行耗时 13 分钟 → 6 分钟（−7 分钟）；总时长 153 分钟 → 116 分钟（少花 37 分钟）",
+        "保留：东花墙子街、曲水亭街",
+        "删掉：芙蓉街、西更道街",
+        "新增：后宰门街",
+        "路段 曲水亭街 → 芙蓉街：本次不再经过",
+        "路段 芙蓉街 → 西更道街：本次不再经过",
+        "路段 曲水亭街 → 后宰门街：本次新增实测"
+      ]
+    },
+    {
+      "label": "【B2 少走路 + 总量 ≤3 公里】",
+      "revision": 3,
+      "status": "pending-review",
+      "route": {
+        "stops": 3,
+        "names": [
+          "东花墙子街",
+          "曲水亭街",
+          "后宰门街"
+        ],
+        "totalWalkMeters": 470,
+        "totalWalkMinutes": 6,
+        "totalMinutes": 116,
+        "maxLegMeters": 194
+      },
+      "walkDeltaVsBaseline": 0,
+      "diffLines": [
+        "v2 → v3：总步行 470 米 → 470 米（步行不变 0 米，+0 米）",
+        "步行耗时 6 分钟 → 6 分钟（+0 分钟）；总时长 116 分钟 → 116 分钟（总耗时不变 0 分钟）",
+        "保留：东花墙子街、曲水亭街、后宰门街"
+      ]
+    },
+    {
+      "label": "【C1 家庭流现状 + 单段 ≤900 米（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 4,
+        "names": [
+          "东花墙子街",
+          "曲水亭街",
+          "芙蓉街",
+          "西更道街"
+        ],
+        "totalWalkMeters": 1011,
+        "totalWalkMinutes": 13,
+        "totalMinutes": 153,
+        "maxLegMeters": 471
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 1011,
+        "totalWalkMinutes": 13,
+        "limit": null,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 471,
+        "segmentLimit": 900,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 1011 米（你没有设走路上限），步行约 13 分钟；最长一段走 471 米，在您定的单段 900 米以内。",
+        "whyDropped": [],
+        "keptBecauseMust": [],
+        "withoutLimit": null,
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    },
+    {
+      "label": "【C2 家庭流现状 + 总量 ≤3 公里（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 4,
+        "names": [
+          "东花墙子街",
+          "曲水亭街",
+          "芙蓉街",
+          "西更道街"
+        ],
+        "totalWalkMeters": 1011,
+        "totalWalkMinutes": 13,
+        "totalMinutes": 153,
+        "maxLegMeters": 471
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 1011,
+        "totalWalkMinutes": 13,
+        "limit": 3000,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 471,
+        "segmentLimit": null,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 1011 米，在您定的 3000 米以内。",
+        "whyDropped": [],
+        "keptBecauseMust": [],
+        "withoutLimit": {
+          "totalWalkMeters": 1011,
+          "totalWalkMinutes": 13,
+          "stopCount": 4
+        },
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    }
+  ],
+  "walkFirst": {
+    "cap": 296,
+    "stops": 2,
+    "names": [
+      "东花墙子街",
+      "曲水亭街"
+    ],
+    "totalWalkMeters": 296,
+    "totalWalkMinutes": 4,
+    "totalMinutes": 84,
+    "maxLegMeters": 194,
+    "probes": [
+      {
+        "cap": 605,
+        "ok": true,
+        "stops": 3,
+        "walk": 470
+      },
+      {
+        "cap": 402,
+        "ok": true,
+        "stops": 2,
+        "walk": 296
+      },
+      {
+        "cap": 300,
+        "ok": true,
+        "stops": 2,
+        "walk": 296
+      },
+      {
+        "cap": 249,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 274,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 287,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 293,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 296,
+        "ok": true,
+        "stops": 2,
+        "walk": 296
+      },
+      {
+        "cap": 294,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 295,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      }
+    ]
+  },
+  "counters": {
+    "afterVerify": 51,
+    "end": 51
+  }
+}

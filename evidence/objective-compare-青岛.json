@@ -1,0 +1,248 @@
+{
+  "checkedAt": "2026-11-21T11:18:23.494Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "city": "青岛",
+  "startKeyword": null,
+  "startName": "劈柴院·江宁会馆",
+  "categories": [
+    "文创街区"
+  ],
+  "paidColdRun": {
+    "place": 11,
+    "walking": 25
+  },
+  "objectivePhaseCalls": {
+    "place": 0,
+    "walking": 0
+  },
+  "baseline": {
+    "stops": 4,
+    "names": [
+      "劈柴院",
+      "中山路综合商业街",
+      "银鱼巷",
+      "大学路"
+    ],
+    "totalWalkMeters": 3058,
+    "totalWalkMinutes": 41,
+    "totalMinutes": 181,
+    "maxLegMeters": 2157
+  },
+  "attempts": [
+    {
+      "label": "【B1 少走路（bias=walk_less，不设硬上限）】",
+      "revision": 2,
+      "status": "pending-review",
+      "route": {
+        "stops": 2,
+        "names": [
+          "劈柴院",
+          "中山路综合商业街"
+        ],
+        "totalWalkMeters": 146,
+        "totalWalkMinutes": 2,
+        "totalMinutes": 82,
+        "maxLegMeters": 79
+      },
+      "walkDeltaVsBaseline": -2912,
+      "diffLines": [
+        "v1 → v2：总步行 3.06 公里 → 146 米（少走 2.91 公里，−2.91 公里）",
+        "步行耗时 41 分钟 → 2 分钟（−39 分钟）；总时长 181 分钟 → 82 分钟（少花 99 分钟）",
+        "保留：劈柴院、中山路综合商业街",
+        "删掉：银鱼巷、大学路",
+        "路段 中山路综合商业街 → 银鱼巷：本次不再经过",
+        "路段 银鱼巷 → 大学路：本次不再经过"
+      ]
+    },
+    {
+      "label": "【B2 少走路 + 总量 ≤3 公里】",
+      "revision": 3,
+      "status": "pending-review",
+      "route": {
+        "stops": 2,
+        "names": [
+          "劈柴院",
+          "中山路综合商业街"
+        ],
+        "totalWalkMeters": 146,
+        "totalWalkMinutes": 2,
+        "totalMinutes": 82,
+        "maxLegMeters": 79
+      },
+      "walkDeltaVsBaseline": 0,
+      "diffLines": [
+        "v2 → v3：总步行 146 米 → 146 米（步行不变 0 米，+0 米）",
+        "步行耗时 2 分钟 → 2 分钟（+0 分钟）；总时长 82 分钟 → 82 分钟（总耗时不变 0 分钟）",
+        "保留：劈柴院、中山路综合商业街"
+      ]
+    },
+    {
+      "label": "【C1 家庭流现状 + 单段 ≤900 米（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 3,
+        "names": [
+          "劈柴院",
+          "中山路综合商业街",
+          "银鱼巷"
+        ],
+        "totalWalkMeters": 901,
+        "totalWalkMinutes": 12,
+        "totalMinutes": 122,
+        "maxLegMeters": 755
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 901,
+        "totalWalkMinutes": 12,
+        "limit": null,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 755,
+        "segmentLimit": 900,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 901 米（你没有设走路上限），步行约 12 分钟；最长一段走 755 米，在您定的单段 900 米以内。",
+        "whyDropped": [],
+        "keptBecauseMust": [],
+        "withoutLimit": null,
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    },
+    {
+      "label": "【C2 家庭流现状 + 总量 ≤3 公里（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 3,
+        "names": [
+          "劈柴院",
+          "中山路综合商业街",
+          "银鱼巷"
+        ],
+        "totalWalkMeters": 901,
+        "totalWalkMinutes": 12,
+        "totalMinutes": 122,
+        "maxLegMeters": 755
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 901,
+        "totalWalkMinutes": 12,
+        "limit": 3000,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 755,
+        "segmentLimit": null,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 901 米，在您定的 3000 米以内。",
+        "whyDropped": [
+          {
+            "id": "14296610",
+            "name": "大学路",
+            "text": "保留「大学路」全程会走到 3058 米，超出你定的 3000 米，所以这次没排它。"
+          }
+        ],
+        "keptBecauseMust": [],
+        "withoutLimit": {
+          "totalWalkMeters": 3058,
+          "totalWalkMinutes": 41,
+          "stopCount": 4
+        },
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    }
+  ],
+  "walkFirst": {
+    "cap": 200,
+    "stops": 2,
+    "names": [
+      "劈柴院",
+      "中山路综合商业街"
+    ],
+    "totalWalkMeters": 146,
+    "totalWalkMinutes": 2,
+    "totalMinutes": 82,
+    "maxLegMeters": 79,
+    "probes": [
+      {
+        "cap": 1629,
+        "ok": true,
+        "stops": 3,
+        "walk": 901
+      },
+      {
+        "cap": 914,
+        "ok": true,
+        "stops": 3,
+        "walk": 901
+      },
+      {
+        "cap": 556,
+        "ok": true,
+        "stops": 2,
+        "walk": 146
+      },
+      {
+        "cap": 377,
+        "ok": true,
+        "stops": 2,
+        "walk": 146
+      },
+      {
+        "cap": 288,
+        "ok": true,
+        "stops": 2,
+        "walk": 146
+      },
+      {
+        "cap": 243,
+        "ok": true,
+        "stops": 2,
+        "walk": 146
+      },
+      {
+        "cap": 221,
+        "ok": true,
+        "stops": 2,
+        "walk": 146
+      },
+      {
+        "cap": 210,
+        "ok": true,
+        "stops": 2,
+        "walk": 146
+      },
+      {
+        "cap": 204,
+        "ok": true,
+        "stops": 2,
+        "walk": 146
+      },
+      {
+        "cap": 201,
+        "ok": true,
+        "stops": 2,
+        "walk": 146
+      },
+      {
+        "cap": 200,
+        "ok": true,
+        "stops": 2,
+        "walk": 146
+      }
+    ]
+  },
+  "counters": {
+    "afterVerify": 36,
+    "end": 36
+  }
+}

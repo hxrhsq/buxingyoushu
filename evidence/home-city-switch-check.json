@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-11-25T13:19:41.038Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "paid": false,
+  "network": "只加载首页与静态资源；没有触发核验/发现/智能体",
+  "script": "home-city-switch-check.mjs",
+  "total": 8,
+  "passed": 8,
+  "checks": [
+    {
+      "name": "默认城市是济南且片区为历下古城",
+      "ok": true,
+      "detail": "陪爸妈慢逛历下古城，每段走得动"
+    },
+    {
+      "name": "首屏三个城市按钮都在",
+      "ok": true,
+      "detail": "count=3"
+    },
+    {
+      "name": "济南按钮默认选中",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "切到南京后片区为秦淮老城南",
+      "ok": true,
+      "detail": "陪爸妈慢逛秦淮老城南，每段走得动"
+    },
+    {
+      "name": "南京按钮选中、济南取消",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "切到扬州后片区为广陵古城",
+      "ok": true,
+      "detail": "陪爸妈慢逛广陵古城，每段走得动"
+    },
+    {
+      "name": "切回济南后片区恢复历下古城",
+      "ok": true,
+      "detail": "陪爸妈慢逛历下古城，每段走得动"
+    },
+    {
+      "name": "全程没有脚本报错",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "pageErrors": [],
+  "screenshot": {
+    "file": "evidence/home-city-switch.png",
+    "bytes": 71592
+  }
+}

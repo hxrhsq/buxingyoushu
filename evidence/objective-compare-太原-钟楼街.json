@@ -1,0 +1,248 @@
+{
+  "checkedAt": "2026-11-22T06:53:11.957Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "city": "太原",
+  "startKeyword": "钟楼街",
+  "startName": "柳巷钟楼街景区",
+  "categories": [
+    "文创街区"
+  ],
+  "paidColdRun": {
+    "place": 1,
+    "walking": 6
+  },
+  "objectivePhaseCalls": {
+    "place": 0,
+    "walking": 0
+  },
+  "baseline": {
+    "stops": 4,
+    "names": [
+      "柳巷南路",
+      "柳巷",
+      "食品街",
+      "西华门街"
+    ],
+    "totalWalkMeters": 2799,
+    "totalWalkMinutes": 38,
+    "totalMinutes": 178,
+    "maxLegMeters": 1171
+  },
+  "attempts": [
+    {
+      "label": "【B1 少走路（bias=walk_less，不设硬上限）】",
+      "revision": 2,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "柳巷南路"
+        ],
+        "totalWalkMeters": 279,
+        "totalWalkMinutes": 4,
+        "totalMinutes": 54,
+        "maxLegMeters": 279
+      },
+      "walkDeltaVsBaseline": -2520,
+      "diffLines": [
+        "v1 → v2：总步行 2.80 公里 → 279 米（少走 2.52 公里，−2.52 公里）",
+        "步行耗时 38 分钟 → 4 分钟（−34 分钟）；总时长 178 分钟 → 54 分钟（少花 124 分钟）",
+        "保留：柳巷南路",
+        "删掉：柳巷、食品街、西华门街",
+        "路段 柳巷南路 → 柳巷：本次不再经过",
+        "路段 柳巷 → 食品街：本次不再经过",
+        "路段 食品街 → 西华门街：本次不再经过"
+      ]
+    },
+    {
+      "label": "【B2 少走路 + 总量 ≤3 公里】",
+      "revision": 3,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "柳巷南路"
+        ],
+        "totalWalkMeters": 279,
+        "totalWalkMinutes": 4,
+        "totalMinutes": 54,
+        "maxLegMeters": 279
+      },
+      "walkDeltaVsBaseline": 0,
+      "diffLines": [
+        "v2 → v3：总步行 279 米 → 279 米（步行不变 0 米，+0 米）",
+        "步行耗时 4 分钟 → 4 分钟（+0 分钟）；总时长 54 分钟 → 54 分钟（总耗时不变 0 分钟）",
+        "保留：柳巷南路"
+      ]
+    },
+    {
+      "label": "【C1 家庭流现状 + 单段 ≤900 米（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 3,
+        "names": [
+          "柳巷南路",
+          "柳巷",
+          "食品街"
+        ],
+        "totalWalkMeters": 1628,
+        "totalWalkMinutes": 22,
+        "totalMinutes": 132,
+        "maxLegMeters": 706
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 1628,
+        "totalWalkMinutes": 22,
+        "limit": null,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 706,
+        "segmentLimit": 900,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 1628 米（你没有设走路上限），步行约 22 分钟；最长一段走 706 米，在您定的单段 900 米以内。",
+        "whyDropped": [],
+        "keptBecauseMust": [],
+        "withoutLimit": null,
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    },
+    {
+      "label": "【C2 家庭流现状 + 总量 ≤3 公里（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 4,
+        "names": [
+          "柳巷南路",
+          "柳巷",
+          "食品街",
+          "西华门街"
+        ],
+        "totalWalkMeters": 2799,
+        "totalWalkMinutes": 38,
+        "totalMinutes": 178,
+        "maxLegMeters": 1171
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 2799,
+        "totalWalkMinutes": 38,
+        "limit": 3000,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 1171,
+        "segmentLimit": null,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 2799 米，在您定的 3000 米以内。",
+        "whyDropped": [],
+        "keptBecauseMust": [],
+        "withoutLimit": {
+          "totalWalkMeters": 2799,
+          "totalWalkMinutes": 38,
+          "stopCount": 4
+        },
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    }
+  ],
+  "walkFirst": {
+    "cap": 985,
+    "stops": 2,
+    "names": [
+      "柳巷南路",
+      "柳巷"
+    ],
+    "totalWalkMeters": 985,
+    "totalWalkMinutes": 13,
+    "totalMinutes": 93,
+    "maxLegMeters": 706,
+    "probes": [
+      {
+        "cap": 1499,
+        "ok": true,
+        "stops": 2,
+        "walk": 985
+      },
+      {
+        "cap": 849,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 1174,
+        "ok": true,
+        "stops": 2,
+        "walk": 985
+      },
+      {
+        "cap": 1011,
+        "ok": true,
+        "stops": 2,
+        "walk": 985
+      },
+      {
+        "cap": 930,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 970,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 990,
+        "ok": true,
+        "stops": 2,
+        "walk": 985
+      },
+      {
+        "cap": 980,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 985,
+        "ok": true,
+        "stops": 2,
+        "walk": 985
+      },
+      {
+        "cap": 982,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 983,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 984,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      }
+    ]
+  },
+  "counters": {
+    "afterVerify": 54,
+    "end": 54
+  }
+}

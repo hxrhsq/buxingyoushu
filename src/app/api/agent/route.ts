@@ -1,0 +1,217 @@
+import { parseCategories, pickCity, SUPPORTED_CITIES } from "@/lib/discovery";
+import {
+  agentServerStatus,
+  exploreWithAgent,
+  shortenWithAgent,
+  type JourneyIntent,
+} from "@/lib/server/agent";
+import { AUTH_FAILURE, readToken } from "@/lib/server/plan-http";
+import { identifyRole } from "@/lib/server/plan-store";
+import type { Role } from "@/lib/negotiation/types";
+import type { AdjustResponse, AgentStreamFrame, ExploreResponse } from "@/lib/types";
+import { DEFAULT_VERIFY_CATEGORIES } from "@/lib/verification";
+import { connection } from "next/server";
+
+interface AgentRequestBody {
+  intent?: unknown;
+  token?: unknown;
+  cityName?: unknown;
+  stopId?: unknown;
+  interests?: unknown;
+  categories?: unknown;
+  planId?: unknown;
+}
+
+/** 增量帧太碎会压垮浏览器渲染，攒到这么长或这么久没出字再发一帧。 */
+const FLUSH_CHARS = 24;
+const FLUSH_MS = 160;
+
+/**
+ * 服务端状态。cacheComponents 下 GET 会被预渲染，
+ * 必须 await connection() 才能每次实时读 env 与调用计数。
+ * 返回体里只有脱敏后的 ID 与用量，绝不包含 key 或裸会话对象。
+ */
+export async function GET() {
+  await connection();
+  return Response.json(await agentServerStatus());
+}
+
+/**
+ * 智能体开始出字就往下推 delta 帧，服务端复验完才推 result 帧。
+ * delta 只用于「真的在生成」的进度反馈，未经校验，不能当结论展示。
+ */
+function streamAgent(
+  intent: "arrive" | "shorten",
+  journey: JourneyIntent,
+  token: string | null,
+): Response {
+  let pump: (chunk: string) => void = () => {};
+  let seal: (frame: AgentStreamFrame) => void = () => {};
+  let abort: (reason: string) => void = () => {};
+
+  const body = new ReadableStream<Uint8Array>({
+    start(controller) {
+      const encoder = new TextEncoder();
+      // 浏览器中途关页面 → 流已关闭，此时 enqueue 会抛。异常若从 onDelta 反向传进智能体回合，
+      // 会把一次「客户端断开」变成服务端未处理拒绝；钱已经花了，这里只静默丢弃后续帧。
+      const send = (frame: AgentStreamFrame) => {
+        try {
+          controller.enqueue(encoder.encode(`data: ${JSON.stringify(frame)}\n\n`));
+        } catch {
+          /* 客户端已断开 */
+        }
+      };
+      let pending = "";
+      let timer: ReturnType<typeof setTimeout> | null = null;
+
+      const flush = () => {
+        if (timer) {
+          clearTimeout(timer);
+          timer = null;
+        }
+        if (!pending) return;
+        const text = pending;
+        pending = "";
+        send({ type: "delta", text });
+      };
+
+      pump = (chunk) => {
+        pending += chunk;
+        if (pending.length >= FLUSH_CHARS) {
+          flush();
+          return;
+        }
+        if (!timer) timer = setTimeout(flush, FLUSH_MS);
+      };
+      seal = (frame) => {
+        flush();
+        send(frame);
+        try {
+          controller.close();
+        } catch {
+          /* 客户端已断开 */
+        }
+      };
+      // 流已经开了就没有状态码可用：异常改用 result 帧说明原因，绝不静默
+      abort = (reason) => {
+        seal({
+          type: "result",
+          response: {
+            ok: false,
+            error: reason,
+            proof: null,
+            token,
+          } as unknown as ExploreResponse & AdjustResponse,
+        });
+      };
+    },
+  });
+
+  const run =
+    intent === "arrive"
+      ? exploreWithAgent(journey, token, { onDelta: (text) => pump(text) })
+      : shortenWithAgent(journey, token, { onDelta: (text) => pump(text) });
+
+  run.then(
+    (response) => seal({ type: "result", response }),
+    (caught: unknown) => abort(caught instanceof Error ? caught.message : String(caught)),
+  );
+
+  return new Response(body, {
+    headers: {
+      "Content-Type": "text/event-stream; charset=utf-8",
+      "Cache-Control": "no-cache, no-store, no-transform",
+      Connection: "keep-alive",
+      "X-Accel-Buffering": "no",
+    },
+  });
+}
+
+/**
+ * 「我到了」与「少走一点」共用的入口。
+ * 浏览器只提交意图 + 站点 id + 会话票据，坐标与已核实数据全部由服务端自己取。
+ */
+export async function POST(request: Request) {
+  const rawBody = await request.text();
+  // 正常请求只有几百字节。这条上限挡住用巨型 prompt 灌本端点：超限直接 413，不建会话、不进模型。
+  if (rawBody.length > 8_192) {
+    return Response.json(
+      { error: "请求体过大（本端点只接受意图、站点 id、兴趣标签、类别与会话票据）。" },
+      { status: 413 },
+    );
+  }
+  let body: AgentRequestBody | null = null;
+  if (rawBody) {
+    try {
+      body = JSON.parse(rawBody) as AgentRequestBody;
+    } catch {
+      return Response.json({ error: "请求体不是合法 JSON。" }, { status: 400 });
+    }
+  }
+
+  const intent = body?.intent;
+  if (intent !== "arrive" && intent !== "shorten") {
+    return Response.json(
+      { error: `intent 只能是 arrive 或 shorten，收到「${String(intent ?? "空")}」。` },
+      { status: 400 },
+    );
+  }
+
+  /**
+   * 双人模式：带 planId 就必须拿出这一方的角色凭据，服务端据此读取这条协商
+   * 双方确认的正式版本；不带凭据或凭据不对，一律不读别人的方案。
+   * 单人流程完全不变（不带 planId 就是单人）。
+   */
+  const planId = typeof body?.planId === "string" && body.planId.length <= 64 ? body.planId : null;
+  let plan: { planId: string; role: Role } | undefined;
+  if (planId) {
+    const identified = identifyRole(planId, readToken(request));
+    if ("error" in identified) {
+      const entry = AUTH_FAILURE[identified.error] ?? AUTH_FAILURE["bad-token"];
+      return Response.json({ error: entry.message, code: identified.error }, { status: entry.status });
+    }
+    if (intent === "shorten") {
+      return Response.json(
+        {
+          error:
+            "双人模式下「少走一点」不能由单人当场替换已确认的正式行程。" +
+            "请在协商面板点「少走一点（只提提案，不改条件）」，新提案要双方确认才会生效。",
+          code: "joint-shorten-refused",
+        },
+        { status: 409 },
+      );
+    }
+    plan = { planId, role: identified.role };
+  }
+
+  const cityName = pickCity(body?.cityName);
+  if (!cityName) {
+    return Response.json(
+      { error: `目前只支持${SUPPORTED_CITIES.join("、")}，收到的 cityName 是「${String(body?.cityName ?? "空").slice(0, 40)}」。` },
+      { status: 400 },
+    );
+  }
+
+  // 站点 id 与票据都会被服务端拿去做映射键，所以限制长度；内容合法性由 resolveJourney 与会话表判定
+  const stopId = typeof body?.stopId === "string" && body.stopId.length <= 64 ? body.stopId : null;
+  const token = typeof body?.token === "string" && body.token.length <= 64 ? body.token : null;
+  const interests = Array.isArray(body?.interests)
+    ? body.interests.filter((item): item is string => typeof item === "string")
+    : [];
+
+  // 智能体读的行程必须跟界面上那份同源，所以类别由浏览器回传；不带就按默认类别
+  const requestedCategories = body?.categories;
+  const categories =
+    requestedCategories === undefined || requestedCategories === null
+      ? [...DEFAULT_VERIFY_CATEGORIES]
+      : parseCategories(requestedCategories);
+  if (!categories.length) {
+    return Response.json(
+      { error: "categories 里没有任何受支持的类别（自然风光 / 文创街区 / 城市观光）。" },
+      { status: 400 },
+    );
+  }
+
+  // 参数不合法仍是普通 JSON + HTTP 400；进入智能体后改为流式响应
+  return streamAgent(intent, { cityName, stopId, interests, categories, plan }, token);
+}

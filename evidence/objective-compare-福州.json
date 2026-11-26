@@ -1,0 +1,244 @@
+{
+  "checkedAt": "2026-11-22T06:50:18.958Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "city": "福州",
+  "startKeyword": null,
+  "startName": "三坊七巷",
+  "categories": [
+    "文创街区"
+  ],
+  "paidColdRun": {
+    "place": 12,
+    "walking": 37
+  },
+  "objectivePhaseCalls": {
+    "place": 0,
+    "walking": 0
+  },
+  "baseline": {
+    "stops": 4,
+    "names": [
+      "三坊七巷-吉庇巷",
+      "三坊七巷-安民巷",
+      "南后街",
+      "三坊七巷-天后宫(郎官巷)"
+    ],
+    "totalWalkMeters": 1293,
+    "totalWalkMinutes": 17,
+    "totalMinutes": 157,
+    "maxLegMeters": 390
+  },
+  "attempts": [
+    {
+      "label": "【B1 少走路（bias=walk_less，不设硬上限）】",
+      "revision": 2,
+      "status": "pending-review",
+      "route": {
+        "stops": 2,
+        "names": [
+          "三坊七巷-安民巷",
+          "三坊七巷-吉庇巷"
+        ],
+        "totalWalkMeters": 408,
+        "totalWalkMinutes": 6,
+        "totalMinutes": 86,
+        "maxLegMeters": 364
+      },
+      "walkDeltaVsBaseline": -885,
+      "diffLines": [
+        "v1 → v2：总步行 1.29 公里 → 408 米（少走 885 米，−885 米）",
+        "步行耗时 17 分钟 → 6 分钟（−11 分钟）；总时长 157 分钟 → 86 分钟（少花 71 分钟）",
+        "保留：三坊七巷-吉庇巷、三坊七巷-安民巷",
+        "删掉：南后街、三坊七巷-天后宫(郎官巷)",
+        "顺序：三坊七巷-安民巷 从第 2 站到第 1 站",
+        "顺序：三坊七巷-吉庇巷 从第 1 站到第 2 站",
+        "路段 三坊七巷 → 三坊七巷-吉庇巷：本次不再经过",
+        "路段 三坊七巷-吉庇巷 → 三坊七巷-安民巷：本次不再经过",
+        "路段 三坊七巷-安民巷 → 南后街：本次不再经过",
+        "路段 南后街 → 三坊七巷-天后宫(郎官巷)：本次不再经过",
+        "路段 三坊七巷 → 三坊七巷-安民巷：本次新增实测",
+        "路段 三坊七巷-安民巷 → 三坊七巷-吉庇巷：本次新增实测"
+      ]
+    },
+    {
+      "label": "【B2 少走路 + 总量 ≤3 公里】",
+      "revision": 3,
+      "status": "pending-review",
+      "route": {
+        "stops": 2,
+        "names": [
+          "三坊七巷-安民巷",
+          "三坊七巷-吉庇巷"
+        ],
+        "totalWalkMeters": 408,
+        "totalWalkMinutes": 6,
+        "totalMinutes": 86,
+        "maxLegMeters": 364
+      },
+      "walkDeltaVsBaseline": 0,
+      "diffLines": [
+        "v2 → v3：总步行 408 米 → 408 米（步行不变 0 米，+0 米）",
+        "步行耗时 6 分钟 → 6 分钟（+0 分钟）；总时长 86 分钟 → 86 分钟（总耗时不变 0 分钟）",
+        "保留：三坊七巷-安民巷、三坊七巷-吉庇巷"
+      ]
+    },
+    {
+      "label": "【C1 家庭流现状 + 单段 ≤900 米（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 4,
+        "names": [
+          "三坊七巷-吉庇巷",
+          "三坊七巷-安民巷",
+          "南后街",
+          "三坊七巷-天后宫(郎官巷)"
+        ],
+        "totalWalkMeters": 1293,
+        "totalWalkMinutes": 17,
+        "totalMinutes": 157,
+        "maxLegMeters": 390
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 1293,
+        "totalWalkMinutes": 17,
+        "limit": null,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 390,
+        "segmentLimit": 900,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 1293 米（你没有设走路上限），步行约 17 分钟；最长一段走 390 米，在您定的单段 900 米以内。",
+        "whyDropped": [],
+        "keptBecauseMust": [],
+        "withoutLimit": null,
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    },
+    {
+      "label": "【C2 家庭流现状 + 总量 ≤3 公里（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 4,
+        "names": [
+          "三坊七巷-吉庇巷",
+          "三坊七巷-安民巷",
+          "南后街",
+          "三坊七巷-天后宫(郎官巷)"
+        ],
+        "totalWalkMeters": 1293,
+        "totalWalkMinutes": 17,
+        "totalMinutes": 157,
+        "maxLegMeters": 390
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 1293,
+        "totalWalkMinutes": 17,
+        "limit": 3000,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 390,
+        "segmentLimit": null,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 1293 米，在您定的 3000 米以内。",
+        "whyDropped": [],
+        "keptBecauseMust": [],
+        "withoutLimit": {
+          "totalWalkMeters": 1293,
+          "totalWalkMinutes": 17,
+          "stopCount": 4
+        },
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    }
+  ],
+  "walkFirst": {
+    "cap": 408,
+    "stops": 2,
+    "names": [
+      "三坊七巷-安民巷",
+      "三坊七巷-吉庇巷"
+    ],
+    "totalWalkMeters": 408,
+    "totalWalkMinutes": 6,
+    "totalMinutes": 86,
+    "maxLegMeters": 364,
+    "probes": [
+      {
+        "cap": 746,
+        "ok": true,
+        "stops": 3,
+        "walk": 583
+      },
+      {
+        "cap": 472,
+        "ok": true,
+        "stops": 2,
+        "walk": 408
+      },
+      {
+        "cap": 335,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 403,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 437,
+        "ok": true,
+        "stops": 2,
+        "walk": 408
+      },
+      {
+        "cap": 420,
+        "ok": true,
+        "stops": 2,
+        "walk": 408
+      },
+      {
+        "cap": 411,
+        "ok": true,
+        "stops": 2,
+        "walk": 408
+      },
+      {
+        "cap": 407,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 409,
+        "ok": true,
+        "stops": 2,
+        "walk": 408
+      },
+      {
+        "cap": 408,
+        "ok": true,
+        "stops": 2,
+        "walk": 408
+      }
+    ]
+  },
+  "counters": {
+    "afterVerify": 49,
+    "end": 49
+  }
+}

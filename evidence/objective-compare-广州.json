@@ -1,0 +1,242 @@
+{
+  "checkedAt": "2026-11-22T06:45:19.997Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "city": "广州",
+  "startKeyword": null,
+  "startName": "永庆坊",
+  "categories": [
+    "文创街区"
+  ],
+  "paidColdRun": {
+    "place": 11,
+    "walking": 31
+  },
+  "objectivePhaseCalls": {
+    "place": 0,
+    "walking": 0
+  },
+  "baseline": {
+    "stops": 4,
+    "names": [
+      "荔枝湾",
+      "永庆坊",
+      "上下九商业步行街",
+      "长寿路"
+    ],
+    "totalWalkMeters": 2335,
+    "totalWalkMinutes": 31,
+    "totalMinutes": 171,
+    "maxLegMeters": 1161
+  },
+  "attempts": [
+    {
+      "label": "【B1 少走路（bias=walk_less，不设硬上限）】",
+      "revision": 2,
+      "status": "pending-review",
+      "route": {
+        "stops": 2,
+        "names": [
+          "永庆坊",
+          "荔枝湾"
+        ],
+        "totalWalkMeters": 198,
+        "totalWalkMinutes": 4,
+        "totalMinutes": 84,
+        "maxLegMeters": 197
+      },
+      "walkDeltaVsBaseline": -2108,
+      "diffLines": [
+        "v1 → v2：总步行 2.31 公里 → 198 米（少走 2.11 公里，−2.11 公里）",
+        "步行耗时 32 分钟 → 4 分钟（−28 分钟）；总时长 172 分钟 → 84 分钟（少花 88 分钟）",
+        "保留：永庆坊、荔枝湾",
+        "删掉：上下九商业步行街、长寿路",
+        "路段 荔枝湾 → 上下九商业步行街：本次不再经过",
+        "路段 上下九商业步行街 → 长寿路：本次不再经过"
+      ]
+    },
+    {
+      "label": "【B2 少走路 + 总量 ≤3 公里】",
+      "revision": 3,
+      "status": "pending-review",
+      "route": {
+        "stops": 2,
+        "names": [
+          "永庆坊",
+          "荔枝湾"
+        ],
+        "totalWalkMeters": 198,
+        "totalWalkMinutes": 4,
+        "totalMinutes": 84,
+        "maxLegMeters": 197
+      },
+      "walkDeltaVsBaseline": 0,
+      "diffLines": [
+        "v2 → v3：总步行 198 米 → 198 米（步行不变 0 米，+0 米）",
+        "步行耗时 4 分钟 → 4 分钟（+0 分钟）；总时长 84 分钟 → 84 分钟（总耗时不变 0 分钟）",
+        "保留：永庆坊、荔枝湾"
+      ]
+    },
+    {
+      "label": "【C1 家庭流现状 + 单段 ≤900 米（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 2,
+        "names": [
+          "永庆坊",
+          "荔枝湾"
+        ],
+        "totalWalkMeters": 198,
+        "totalWalkMinutes": 4,
+        "totalMinutes": 84,
+        "maxLegMeters": 197
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 198,
+        "totalWalkMinutes": 4,
+        "limit": null,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 197,
+        "segmentLimit": 900,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 198 米（你没有设走路上限），步行约 4 分钟；最长一段走 197 米，在您定的单段 900 米以内。",
+        "whyDropped": [],
+        "keptBecauseMust": [],
+        "withoutLimit": null,
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    },
+    {
+      "label": "【C2 家庭流现状 + 总量 ≤3 公里（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 4,
+        "names": [
+          "永庆坊",
+          "荔枝湾",
+          "上下九商业步行街",
+          "长寿路"
+        ],
+        "totalWalkMeters": 2306,
+        "totalWalkMinutes": 32,
+        "totalMinutes": 172,
+        "maxLegMeters": 1328
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 2306,
+        "totalWalkMinutes": 32,
+        "limit": 3000,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 1328,
+        "segmentLimit": null,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 2306 米，在您定的 3000 米以内。",
+        "whyDropped": [],
+        "keptBecauseMust": [],
+        "withoutLimit": {
+          "totalWalkMeters": 2306,
+          "totalWalkMinutes": 32,
+          "stopCount": 4
+        },
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    }
+  ],
+  "walkFirst": {
+    "cap": 200,
+    "stops": 2,
+    "names": [
+      "永庆坊",
+      "荔枝湾"
+    ],
+    "totalWalkMeters": 198,
+    "totalWalkMinutes": 4,
+    "totalMinutes": 84,
+    "maxLegMeters": 197,
+    "probes": [
+      {
+        "cap": 1267,
+        "ok": true,
+        "stops": 2,
+        "walk": 198
+      },
+      {
+        "cap": 733,
+        "ok": true,
+        "stops": 2,
+        "walk": 198
+      },
+      {
+        "cap": 466,
+        "ok": true,
+        "stops": 2,
+        "walk": 198
+      },
+      {
+        "cap": 332,
+        "ok": true,
+        "stops": 2,
+        "walk": 198
+      },
+      {
+        "cap": 265,
+        "ok": true,
+        "stops": 2,
+        "walk": 198
+      },
+      {
+        "cap": 232,
+        "ok": true,
+        "stops": 2,
+        "walk": 198
+      },
+      {
+        "cap": 215,
+        "ok": true,
+        "stops": 2,
+        "walk": 198
+      },
+      {
+        "cap": 207,
+        "ok": true,
+        "stops": 2,
+        "walk": 198
+      },
+      {
+        "cap": 203,
+        "ok": true,
+        "stops": 2,
+        "walk": 198
+      },
+      {
+        "cap": 201,
+        "ok": true,
+        "stops": 2,
+        "walk": 198
+      },
+      {
+        "cap": 200,
+        "ok": true,
+        "stops": 2,
+        "walk": 198
+      }
+    ]
+  },
+  "counters": {
+    "afterVerify": 42,
+    "end": 42
+  }
+}

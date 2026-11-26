@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-11-25T03:46:07.858Z",
+  "points": [
+    {
+      "city": "济南",
+      "ok": true,
+      "name": "曲水亭街35号院",
+      "address": "曲水亭街35号",
+      "position": {
+        "lat": 36.669152,
+        "lng": 117.024244
+      },
+      "stopCount": 4,
+      "totalMinutes": 153
+    },
+    {
+      "city": "南京",
+      "ok": true,
+      "name": "老门东",
+      "address": "剪子巷与箍桶巷交汇处剪子巷54号",
+      "position": {
+        "lat": 32.011604,
+        "lng": 118.787645
+      },
+      "stopCount": 4,
+      "totalMinutes": 165
+    },
+    {
+      "city": "扬州",
+      "ok": true,
+      "name": "扬州东关街",
+      "address": "东关街与国庆路交叉口东100米",
+      "position": {
+        "lat": 32.398188,
+        "lng": 119.446821
+      },
+      "stopCount": 4,
+      "totalMinutes": 167
+    }
+  ]
+}

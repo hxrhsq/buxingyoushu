@@ -1,0 +1,229 @@
+{
+  "checkedAt": "2026-11-22T06:43:12.963Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "city": "绍兴",
+  "startKeyword": null,
+  "startName": "仓桥直街历史街区-马头墙",
+  "categories": [
+    "文创街区"
+  ],
+  "paidColdRun": {
+    "place": 12,
+    "walking": 25
+  },
+  "objectivePhaseCalls": {
+    "place": 0,
+    "walking": 0
+  },
+  "baseline": {
+    "stops": 4,
+    "names": [
+      "仓桥直街历史街区",
+      "绍兴老街",
+      "西小路历史街区",
+      "书圣故里"
+    ],
+    "totalWalkMeters": 4843,
+    "totalWalkMinutes": 64,
+    "totalMinutes": 204,
+    "maxLegMeters": 2108
+  },
+  "attempts": [
+    {
+      "label": "【B1 少走路（bias=walk_less，不设硬上限）】",
+      "revision": 2,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "仓桥直街历史街区"
+        ],
+        "totalWalkMeters": 175,
+        "totalWalkMinutes": 2,
+        "totalMinutes": 52,
+        "maxLegMeters": 175
+      },
+      "walkDeltaVsBaseline": -4631,
+      "diffLines": [
+        "v1 → v2：总步行 4.81 公里 → 175 米（少走 4.63 公里，−4.63 公里）",
+        "步行耗时 64 分钟 → 2 分钟（−62 分钟）；总时长 204 分钟 → 52 分钟（少花 152 分钟）",
+        "保留：仓桥直街历史街区",
+        "删掉：绍兴老街、西小路历史街区、书圣故里",
+        "顺序：仓桥直街历史街区 从第 2 站到第 1 站",
+        "路段 仓桥直街历史街区-马头墙 → 绍兴老街：本次不再经过",
+        "路段 绍兴老街 → 仓桥直街历史街区：本次不再经过",
+        "路段 仓桥直街历史街区 → 西小路历史街区：本次不再经过",
+        "路段 西小路历史街区 → 书圣故里：本次不再经过",
+        "路段 仓桥直街历史街区-马头墙 → 仓桥直街历史街区：本次新增实测"
+      ]
+    },
+    {
+      "label": "【B2 少走路 + 总量 ≤3 公里】",
+      "revision": 3,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "仓桥直街历史街区"
+        ],
+        "totalWalkMeters": 175,
+        "totalWalkMinutes": 2,
+        "totalMinutes": 52,
+        "maxLegMeters": 175
+      },
+      "walkDeltaVsBaseline": 0,
+      "diffLines": [
+        "v2 → v3：总步行 175 米 → 175 米（步行不变 0 米，+0 米）",
+        "步行耗时 2 分钟 → 2 分钟（+0 分钟）；总时长 52 分钟 → 52 分钟（总耗时不变 0 分钟）",
+        "保留：仓桥直街历史街区"
+      ]
+    },
+    {
+      "label": "【C1 家庭流现状 + 单段 ≤900 米（目标仍是最多站）】",
+      "ok": false,
+      "code": "no-solution",
+      "route": null,
+      "newAmapCalls": 0,
+      "reason": "按当前条件最多只能排 1 个站（仓桥直街历史街区），少于半日游最少需要的 2 站。取消单段上限后能排到 4 站，说明是「一口气最多走 900 米」把站点压掉了。",
+      "explanation": null,
+      "suggestion": null
+    },
+    {
+      "label": "【C2 家庭流现状 + 总量 ≤3 公里（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 3,
+        "names": [
+          "仓桥直街历史街区",
+          "西小路历史街区",
+          "书圣故里"
+        ],
+        "totalWalkMeters": 2978,
+        "totalWalkMinutes": 39,
+        "totalMinutes": 149,
+        "maxLegMeters": 1646
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 2978,
+        "totalWalkMinutes": 39,
+        "limit": 3000,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 1646,
+        "segmentLimit": null,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 2978 米，在您定的 3000 米以内。",
+        "whyDropped": [
+          {
+            "id": "14910941",
+            "name": "绍兴老街",
+            "text": "保留「绍兴老街」全程会走到 4806 米，超出你定的 3000 米，所以这次没排它。"
+          }
+        ],
+        "keptBecauseMust": [],
+        "withoutLimit": {
+          "totalWalkMeters": 4806,
+          "totalWalkMinutes": 64,
+          "stopCount": 4
+        },
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    }
+  ],
+  "walkFirst": {
+    "cap": 1089,
+    "stops": 2,
+    "names": [
+      "仓桥直街历史街区",
+      "绍兴老街"
+    ],
+    "totalWalkMeters": 1089,
+    "totalWalkMinutes": 14,
+    "totalMinutes": 94,
+    "maxLegMeters": 914,
+    "probes": [
+      {
+        "cap": 2521,
+        "ok": true,
+        "stops": 2,
+        "walk": 1089
+      },
+      {
+        "cap": 1360,
+        "ok": true,
+        "stops": 2,
+        "walk": 1089
+      },
+      {
+        "cap": 779,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 1069,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 1214,
+        "ok": true,
+        "stops": 2,
+        "walk": 1089
+      },
+      {
+        "cap": 1141,
+        "ok": true,
+        "stops": 2,
+        "walk": 1089
+      },
+      {
+        "cap": 1105,
+        "ok": true,
+        "stops": 2,
+        "walk": 1089
+      },
+      {
+        "cap": 1087,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 1096,
+        "ok": true,
+        "stops": 2,
+        "walk": 1089
+      },
+      {
+        "cap": 1091,
+        "ok": true,
+        "stops": 2,
+        "walk": 1089
+      },
+      {
+        "cap": 1089,
+        "ok": true,
+        "stops": 2,
+        "walk": 1089
+      },
+      {
+        "cap": 1088,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      }
+    ]
+  },
+  "counters": {
+    "afterVerify": 37,
+    "end": 37
+  }
+}

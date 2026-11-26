@@ -1,0 +1,50 @@
+{
+  "checkedAt": "2026-11-25T03:45:42.745Z",
+  "city": "济南",
+  "factsId": "zounKpNALCHhRi8_",
+  "baseline": {
+    "stops": [
+      "东花墙子街",
+      "曲水亭街",
+      "芙蓉街",
+      "西更道街"
+    ],
+    "totalMinutes": 153
+  },
+  "results": [
+    {
+      "maxTotalMinutes": 60,
+      "ok": false,
+      "reason": "按当前条件最多只能排 1 个站（东花墙子街），少于半日游最少需要的 2 站。每站停留改成 15 分钟能排到 2 站，说明是「每站停留 30 分钟」把站点压掉了。",
+      "newAmapCalls": 0
+    },
+    {
+      "maxTotalMinutes": 90,
+      "ok": true,
+      "stops": [
+        "东花墙子街",
+        "曲水亭街"
+      ],
+      "stopCount": 2,
+      "totalMinutes": 84,
+      "totalWalkMinutes": 4,
+      "budgetMinutes": 90,
+      "newAmapCalls": 0
+    },
+    {
+      "maxTotalMinutes": 120,
+      "ok": true,
+      "stops": [
+        "东花墙子街",
+        "曲水亭街",
+        "后宰门街"
+      ],
+      "stopCount": 3,
+      "totalMinutes": 116,
+      "totalWalkMinutes": 6,
+      "budgetMinutes": 120,
+      "newAmapCalls": 0
+    }
+  ],
+  "failures": []
+}

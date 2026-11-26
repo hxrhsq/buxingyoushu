@@ -1,0 +1,50 @@
+{
+  "checkedAt": "2026-11-25T13:31:23.561Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "script": "hotel-card-check.mjs",
+  "total": 8,
+  "passed": 8,
+  "checks": [
+    {
+      "name": "路线页出现「住一晚」",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "展示按步行排序的说明",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "出现酒店与步行分钟",
+      "ok": true,
+      "detail": "到第一站步行 1 分钟 · 17 米 / 到第一站步行 3 分钟 · 201 米 / 到第一站步行 4 分钟 · 301 米"
+    },
+    {
+      "name": "有「飞猪详情」入口",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "标注「含推广链接」",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "不显示佣金金额字段",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "酒店外链带 sponsored 归因标识",
+      "ok": true,
+      "detail": "count=2"
+    },
+    {
+      "name": "全程没有脚本报错",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "pageErrors": []
+}

@@ -1,0 +1,250 @@
+{
+  "checkedAt": "2026-11-22T06:52:49.871Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "city": "太原",
+  "startKeyword": null,
+  "startName": "印象·富士体验中心-太原钟楼街",
+  "categories": [
+    "文创街区"
+  ],
+  "paidColdRun": {
+    "place": 11,
+    "walking": 36
+  },
+  "objectivePhaseCalls": {
+    "place": 0,
+    "walking": 0
+  },
+  "baseline": {
+    "stops": 4,
+    "names": [
+      "食品街",
+      "西华门街",
+      "柳巷",
+      "柳巷南路"
+    ],
+    "totalWalkMeters": 3172,
+    "totalWalkMinutes": 43,
+    "totalMinutes": 183,
+    "maxLegMeters": 1171
+  },
+  "attempts": [
+    {
+      "label": "【B1 少走路（bias=walk_less，不设硬上限）】",
+      "revision": 2,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "柳巷"
+        ],
+        "totalWalkMeters": 134,
+        "totalWalkMinutes": 2,
+        "totalMinutes": 52,
+        "maxLegMeters": 134
+      },
+      "walkDeltaVsBaseline": -3038,
+      "diffLines": [
+        "v1 → v2：总步行 3.17 公里 → 134 米（少走 3.04 公里，−3.04 公里）",
+        "步行耗时 43 分钟 → 2 分钟（−41 分钟）；总时长 183 分钟 → 52 分钟（少花 131 分钟）",
+        "保留：柳巷",
+        "删掉：食品街、西华门街、柳巷南路",
+        "顺序：柳巷 从第 3 站到第 1 站",
+        "路段 印象·富士体验中心-太原钟楼街 → 食品街：本次不再经过",
+        "路段 食品街 → 西华门街：本次不再经过",
+        "路段 西华门街 → 柳巷：本次不再经过",
+        "路段 柳巷 → 柳巷南路：本次不再经过",
+        "路段 印象·富士体验中心-太原钟楼街 → 柳巷：本次新增实测"
+      ]
+    },
+    {
+      "label": "【B2 少走路 + 总量 ≤3 公里】",
+      "revision": 3,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "柳巷"
+        ],
+        "totalWalkMeters": 134,
+        "totalWalkMinutes": 2,
+        "totalMinutes": 52,
+        "maxLegMeters": 134
+      },
+      "walkDeltaVsBaseline": 0,
+      "diffLines": [
+        "v2 → v3：总步行 134 米 → 134 米（步行不变 0 米，+0 米）",
+        "步行耗时 2 分钟 → 2 分钟（+0 分钟）；总时长 52 分钟 → 52 分钟（总耗时不变 0 分钟）",
+        "保留：柳巷"
+      ]
+    },
+    {
+      "label": "【C1 家庭流现状 + 单段 ≤900 米（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 3,
+        "names": [
+          "食品街",
+          "柳巷",
+          "柳巷南路"
+        ],
+        "totalWalkMeters": 1857,
+        "totalWalkMinutes": 25,
+        "totalMinutes": 135,
+        "maxLegMeters": 706
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 1857,
+        "totalWalkMinutes": 25,
+        "limit": null,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 706,
+        "segmentLimit": 900,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 1857 米（你没有设走路上限），步行约 25 分钟；最长一段走 706 米，在您定的单段 900 米以内。",
+        "whyDropped": [],
+        "keptBecauseMust": [],
+        "withoutLimit": null,
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    },
+    {
+      "label": "【C2 家庭流现状 + 总量 ≤3 公里（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 3,
+        "names": [
+          "食品街",
+          "柳巷",
+          "柳巷南路"
+        ],
+        "totalWalkMeters": 1857,
+        "totalWalkMinutes": 25,
+        "totalMinutes": 135,
+        "maxLegMeters": 706
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 1857,
+        "totalWalkMinutes": 25,
+        "limit": 3000,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 706,
+        "segmentLimit": null,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 1857 米，在您定的 3000 米以内。",
+        "whyDropped": [
+          {
+            "id": "14760833",
+            "name": "西华门街",
+            "text": "保留「西华门街」全程会走到 3172 米，超出你定的 3000 米，所以这次没排它。"
+          }
+        ],
+        "keptBecauseMust": [],
+        "withoutLimit": {
+          "totalWalkMeters": 3172,
+          "totalWalkMinutes": 43,
+          "stopCount": 4
+        },
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    }
+  ],
+  "walkFirst": {
+    "cap": 777,
+    "stops": 2,
+    "names": [
+      "柳巷",
+      "食品街"
+    ],
+    "totalWalkMeters": 777,
+    "totalWalkMinutes": 11,
+    "totalMinutes": 91,
+    "maxLegMeters": 643,
+    "probes": [
+      {
+        "cap": 1686,
+        "ok": true,
+        "stops": 2,
+        "walk": 777
+      },
+      {
+        "cap": 942,
+        "ok": true,
+        "stops": 2,
+        "walk": 777
+      },
+      {
+        "cap": 570,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 756,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 849,
+        "ok": true,
+        "stops": 2,
+        "walk": 777
+      },
+      {
+        "cap": 802,
+        "ok": true,
+        "stops": 2,
+        "walk": 777
+      },
+      {
+        "cap": 779,
+        "ok": true,
+        "stops": 2,
+        "walk": 777
+      },
+      {
+        "cap": 767,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 773,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 776,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 777,
+        "ok": true,
+        "stops": 2,
+        "walk": 777
+      }
+    ]
+  },
+  "counters": {
+    "afterVerify": 47,
+    "end": 47
+  }
+}

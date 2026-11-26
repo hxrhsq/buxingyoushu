@@ -1,0 +1,257 @@
+{
+  "checkedAt": "2026-11-22T06:54:15.312Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "city": "沈阳",
+  "startKeyword": null,
+  "startName": "沈阳中街步行街",
+  "categories": [
+    "文创街区"
+  ],
+  "paidColdRun": {
+    "place": 10,
+    "walking": 32
+  },
+  "objectivePhaseCalls": {
+    "place": 0,
+    "walking": 0
+  },
+  "baseline": {
+    "stops": 4,
+    "names": [
+      "沈阳中街步行街",
+      "满清一条街",
+      "北市场",
+      "老北市"
+    ],
+    "totalWalkMeters": 4174,
+    "totalWalkMinutes": 57,
+    "totalMinutes": 197,
+    "maxLegMeters": 3173
+  },
+  "attempts": [
+    {
+      "label": "【B1 少走路（bias=walk_less，不设硬上限）】",
+      "revision": 2,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "沈阳中街步行街"
+        ],
+        "totalWalkMeters": 1,
+        "totalWalkMinutes": 1,
+        "totalMinutes": 51,
+        "maxLegMeters": 1
+      },
+      "walkDeltaVsBaseline": -4173,
+      "diffLines": [
+        "v1 → v2：总步行 4.17 公里 → 1 米（少走 4.17 公里，−4.17 公里）",
+        "步行耗时 57 分钟 → 1 分钟（−56 分钟）；总时长 197 分钟 → 51 分钟（少花 146 分钟）",
+        "保留：沈阳中街步行街",
+        "删掉：满清一条街、北市场、老北市",
+        "路段 沈阳中街步行街 → 满清一条街：本次不再经过",
+        "路段 满清一条街 → 北市场：本次不再经过",
+        "路段 北市场 → 老北市：本次不再经过"
+      ]
+    },
+    {
+      "label": "【B2 少走路 + 总量 ≤3 公里】",
+      "revision": 3,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "沈阳中街步行街"
+        ],
+        "totalWalkMeters": 1,
+        "totalWalkMinutes": 1,
+        "totalMinutes": 51,
+        "maxLegMeters": 1
+      },
+      "walkDeltaVsBaseline": 0,
+      "diffLines": [
+        "v2 → v3：总步行 1 米 → 1 米（步行不变 0 米，+0 米）",
+        "步行耗时 1 分钟 → 1 分钟（+0 分钟）；总时长 51 分钟 → 51 分钟（总耗时不变 0 分钟）",
+        "保留：沈阳中街步行街"
+      ]
+    },
+    {
+      "label": "【C1 家庭流现状 + 单段 ≤900 米（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 2,
+        "names": [
+          "沈阳中街步行街",
+          "满清一条街"
+        ],
+        "totalWalkMeters": 798,
+        "totalWalkMinutes": 12,
+        "totalMinutes": 92,
+        "maxLegMeters": 797
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 798,
+        "totalWalkMinutes": 12,
+        "limit": null,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 797,
+        "segmentLimit": 900,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 798 米（你没有设走路上限），步行约 12 分钟；最长一段走 797 米，在您定的单段 900 米以内。",
+        "whyDropped": [],
+        "keptBecauseMust": [],
+        "withoutLimit": null,
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    },
+    {
+      "label": "【C2 家庭流现状 + 总量 ≤3 公里（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 3,
+        "names": [
+          "沈阳中街步行街",
+          "满清一条街",
+          "铁锚1956文化创意产业园"
+        ],
+        "totalWalkMeters": 1963,
+        "totalWalkMinutes": 28,
+        "totalMinutes": 138,
+        "maxLegMeters": 1165
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 1963,
+        "totalWalkMinutes": 28,
+        "limit": 3000,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 1165,
+        "segmentLimit": null,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 1963 米，在您定的 3000 米以内。",
+        "whyDropped": [
+          {
+            "id": "146987211",
+            "name": "北市场",
+            "text": "保留「北市场」全程会走到 4174 米，超出你定的 3000 米，所以这次没排它。"
+          },
+          {
+            "id": "182098010",
+            "name": "老北市",
+            "text": "保留「老北市」全程会走到 4174 米，超出你定的 3000 米，所以这次没排它。"
+          }
+        ],
+        "keptBecauseMust": [],
+        "withoutLimit": {
+          "totalWalkMeters": 4174,
+          "totalWalkMinutes": 57,
+          "stopCount": 4
+        },
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    }
+  ],
+  "walkFirst": {
+    "cap": 798,
+    "stops": 2,
+    "names": [
+      "沈阳中街步行街",
+      "满清一条街"
+    ],
+    "totalWalkMeters": 798,
+    "totalWalkMinutes": 12,
+    "totalMinutes": 92,
+    "maxLegMeters": 797,
+    "probes": [
+      {
+        "cap": 2187,
+        "ok": true,
+        "stops": 3,
+        "walk": 1963
+      },
+      {
+        "cap": 1193,
+        "ok": true,
+        "stops": 2,
+        "walk": 798
+      },
+      {
+        "cap": 696,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 944,
+        "ok": true,
+        "stops": 2,
+        "walk": 798
+      },
+      {
+        "cap": 820,
+        "ok": true,
+        "stops": 2,
+        "walk": 798
+      },
+      {
+        "cap": 758,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 789,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 804,
+        "ok": true,
+        "stops": 2,
+        "walk": 798
+      },
+      {
+        "cap": 796,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 800,
+        "ok": true,
+        "stops": 2,
+        "walk": 798
+      },
+      {
+        "cap": 798,
+        "ok": true,
+        "stops": 2,
+        "walk": 798
+      },
+      {
+        "cap": 797,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      }
+    ]
+  },
+  "counters": {
+    "afterVerify": 42,
+    "end": 42
+  }
+}

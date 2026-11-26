@@ -1,0 +1,284 @@
+<style>
+  .xk-root {
+    --paper: #FAF8F5; --paper-2: #F3EEE6; --line: #E5DED2; --ink: #2C3E35;
+    --ink-500: #6B7C70; --ink-300: #9AAA9E; --amber: #D97706; --amber-bg: #FDF6EC;
+    --sage: #3E7C4F; --sage-bg: #EDF5EF;
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    color: var(--ink); background: var(--paper); border: 1px solid var(--line);
+    border-radius: 18px; padding: 22px; max-width: 860px; margin: 0 auto; line-height: 1.6;
+  }
+  .xk-root * { box-sizing: border-box; }
+  .xk-serif { font-family: "Songti SC", "STSong", "SimSun", Georgia, serif; }
+  .xk-hd { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .xk-h1 { font-size: 20px; letter-spacing: .5px; }
+  .xk-tag { font-size: 11px; padding: 3px 9px; border-radius: 999px; }
+  .xk-tag--mock { background: var(--paper-2); color: var(--ink-500); border: 1px solid var(--line); }
+  .xk-tag--real { background: var(--sage-bg); color: var(--sage); border: 1px solid #CFE3D3; }
+  .xk-sub { font-size: 12px; color: var(--ink-500); margin: 6px 0 18px; }
+  .xk-stage { border: 1px solid var(--line); border-radius: 16px; background: #fff; overflow: hidden; }
+  .xk-stage__bar { background: var(--paper-2); padding: 9px 16px; font-size: 11px; color: var(--ink-500);
+    display: flex; gap: 14px; align-items: center; border-bottom: 1px solid var(--line); }
+  .xk-stage__body { padding: 18px 16px 20px; }
+
+  /* 首页那一行 */
+  .xk-ctx { width: 100%; text-align: left; cursor: pointer; font: inherit; background: var(--paper);
+    border: 1px solid var(--line); border-radius: 12px; padding: 11px 13px; display: flex; align-items: center; gap: 10px; }
+  .xk-ctx:hover { border-color: #D6CBB8; }
+  .xk-ctx__pin { flex: 0 0 auto; width: 15px; height: 15px; }
+  .xk-ctx__txt { flex: 1 1 auto; min-width: 0; }
+  .xk-ctx__main { font-size: 14px; }
+  .xk-ctx__note { font-size: 11px; color: var(--ink-500); }
+  .xk-ctx__edit { font-size: 12px; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; flex: 0 0 auto; }
+
+  /* 弹层 */
+  .xk-sheet { margin-top: 12px; border: 1px solid var(--line); border-radius: 14px; padding: 15px; background: #fff; }
+  .xk-sheet__q { font-size: 15px; margin: 0 0 2px; }
+  .xk-sheet__hint { font-size: 11px; color: var(--ink-500); margin: 0 0 12px; }
+  .xk-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .xk-chip { flex: 1 1 116px; cursor: pointer; font: inherit; padding: 10px 12px; border-radius: 11px;
+    border: 1px solid var(--line); background: var(--paper); text-align: left; }
+  .xk-chip b { font-size: 14px; font-weight: 600; display: block; }
+  .xk-chip span { font-size: 11px; color: var(--ink-500); }
+  .xk-chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .xk-chip[aria-pressed="true"] span { color: #C8D3CB; }
+
+  .xk-row { display: flex; justify-content: space-between; gap: 12px; font-size: 12px; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+  .xk-row:last-of-type { border-bottom: 0; }
+  .xk-row__k { color: var(--ink-500); flex: 0 0 auto; }
+  .xk-row__v { text-align: right; }
+
+  .xk-cost { margin-top: 12px; border-radius: 11px; padding: 10px 12px; font-size: 12px; }
+  .xk-cost--cold { background: var(--amber-bg); border: 1px solid #F0DDBE; color: #8A5210; }
+  .xk-cost--warm { background: var(--sage-bg); border: 1px solid #CFE3D3; color: var(--sage); }
+
+  .xk-actions { display: flex; gap: 9px; margin-top: 14px; }
+  .xk-btn { font: inherit; font-size: 13px; cursor: pointer; border-radius: 10px; padding: 9px 15px; border: 1px solid var(--line); background: #fff; color: var(--ink); }
+  .xk-btn--go { background: var(--ink); border-color: var(--ink); color: #fff; flex: 1 1 auto; }
+  .xk-btn--sm { font-size: 11px; padding: 4px 9px; border-radius: 8px; color: var(--ink-500); }
+  .xk-btn--sm[aria-pressed="true"] { color: var(--ink); border-color: #C9BFAE; background: var(--paper-2); }
+
+  /* 结果卡 */
+  .xk-seg { display: flex; gap: 7px; margin: 16px 0 10px; }
+  .xk-stop { display: flex; gap: 11px; align-items: flex-start; }
+  .xk-dot { flex: 0 0 auto; width: 9px; height: 9px; border-radius: 999px; background: var(--ink); margin-top: 8px; }
+  .xk-stop__n { font-size: 14px; }
+  .xk-stop__m { font-size: 11px; color: var(--ink-500); }
+  .xk-leg { margin: 3px 0 3px 4px; padding: 5px 0 5px 15px; border-left: 2px solid var(--line);
+    font-size: 11px; color: var(--ink-500); display: flex; justify-content: space-between; gap: 10px; }
+  .xk-leg b { color: var(--ink); font-weight: 600; }
+  .xk-leg--far { border-left-color: var(--amber); }
+  .xk-sum { margin-top: 12px; background: var(--paper); border: 1px solid var(--line); border-radius: 11px; padding: 11px 13px; font-size: 12px; }
+  .xk-sum__big { font-size: 17px; }
+  .xk-warn { color: #8A5210; }
+  .xk-refuse { border: 1px solid #F0DDBE; background: var(--amber-bg); border-radius: 11px; padding: 11px 13px; font-size: 12px; color: #8A5210; }
+  .xk-deny { font-size: 11px; color: var(--ink-500); }
+  .xk-deny li { margin: 3px 0; }
+  details.xk-fold { margin-top: 12px; border: 1px solid var(--line); border-radius: 11px; padding: 9px 12px; background: #fff; }
+  details.xk-fold > summary { cursor: pointer; font-size: 12px; color: var(--ink-500); }
+  .xk-notes { margin-top: 16px; display: grid; gap: 9px; }
+  .xk-note { font-size: 12px; color: var(--ink-500); border-left: 2px solid var(--line); padding-left: 11px; }
+  .xk-note b { color: var(--ink); }
+  .xk-hidden { display: none !important; }
+</style>
+
+<div class="xk-root">
+  <div class="xk-hd">
+    <div class="xk-h1 xk-serif">城市 / 起点选择器 · 可点走查</div>
+    <div>
+      <span class="xk-tag xk-tag--mock">界面是原型</span>
+      <span class="xk-tag xk-tag--real">三城数字是实测</span>
+    </div>
+  </div>
+  <div class="xk-sub">弹层只回答一道题：<b>今天去哪个城市</b>。起点不给选（理由写在下面）。点「修改」展开弹层，换城市后路线卡与成本说明会跟着变。</div>
+
+  <div class="xk-stage">
+    <div class="xk-stage__bar">
+      <span>首页 · 主流程</span>
+      <span style="margin-left:auto;display:flex;gap:6px;">
+        <button class="xk-btn xk-btn--sm" id="cacheWarm" aria-pressed="true">已有核验缓存</button>
+        <button class="xk-btn xk-btn--sm" id="cacheCold" aria-pressed="false">重启后（要冷跑）</button>
+      </span>
+    </div>
+    <div class="xk-stage__body">
+      <button class="xk-ctx" id="ctxBtn">
+        <svg class="xk-ctx__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/>
+        </svg>
+        <span class="xk-ctx__txt">
+          <span class="xk-ctx__main" id="ctxMain">青岛 · 从劈柴院出发</span>
+          <span class="xk-ctx__note" id="ctxNote">起点坐标由高德实测确认 · 预设三城：杭州 / 苏州 / 青岛</span>
+        </span>
+        <span class="xk-ctx__edit">修改</span>
+      </button>
+
+      <div class="xk-sheet xk-hidden" id="sheet">
+        <p class="xk-sheet__q xk-serif">今天去哪个城市？</p>
+        <p class="xk-sheet__hint">只有这三座是我们要负责到底的：都真跑过核验，排不出时会如实说排不出。</p>
+        <div class="xk-chips" id="chips"></div>
+
+        <div style="margin-top:13px;">
+          <div class="xk-row"><span class="xk-row__k">出发点</span><span class="xk-row__v" id="rowStart">劈柴院（市南老城）</span></div>
+          <div class="xk-row"><span class="xk-row__k">高德搜到的起点</span><span class="xk-row__v" id="rowStartPoi">劈柴院·江宁会馆</span></div>
+          <div class="xk-row"><span class="xk-row__k">候选来自</span><span class="xk-row__v" id="rowSource">飞猪「文创街区」10 条</span></div>
+          <div class="xk-row"><span class="xk-row__k">体力口径</span><span class="xk-row__v">下一页再问爸妈能走多久（本原型不改）</span></div>
+        </div>
+
+        <div class="xk-cost xk-cost--warm" id="costLine"></div>
+
+        <div class="xk-actions">
+          <button class="xk-btn" id="cancelBtn">取消</button>
+          <button class="xk-btn xk-btn--go" id="okBtn">就用这个城市</button>
+        </div>
+      </div>
+
+      <div class="xk-seg">
+        <button class="xk-btn xk-btn--sm" id="modeDefault" aria-pressed="true" style="flex:1;">当前出货路线（站数优先）</button>
+        <button class="xk-btn xk-btn--sm" id="modeWalk" aria-pressed="false" style="flex:1;">少走路版（≥2 站）</button>
+      </div>
+
+      <div id="result"></div>
+
+      <details class="xk-fold" id="denyFold">
+        <summary>为什么不是这些地点（青岛实测拒绝清单）</summary>
+        <ul class="xk-deny" id="denyList"></ul>
+      </details>
+    </div>
+  </div>
+
+  <div class="xk-notes">
+    <div class="xk-note"><b>为什么起点不给选（实测理由）</b><br>
+      苏州同一批候选、起点从平江路换成拙政园，步行从 6893 米变成 <b>7996 米</b>——换起点不必然更省，它是调参旋钮，不是给评委的选项。杭州/苏州真正需要改的是<b>排序目标</b>（站数优先 → 少走路优先），跟起点无关。青岛一个起点就够：默认出货 3058 米。</div>
+    <div class="xk-note"><b>三城实测并排（类别都用「文创街区」，0 元、免费额度）</b><br>
+      杭州 7759 米 → 少走路版 3223 米（−58%）· 苏州 6893 米 → 3185 米（−54%）· 青岛 3058 米 → 146 米（但只 2 站，太薄）。<b>所以 D 档要加"至少 2 站"下限没问题，但上限方向要因城而异：杭州/苏州是被砍下来，青岛是不该砍。</b></div>
+    <div class="xk-note"><b>成本口径（右上角那个开关）</b><br>
+      一城冷跑约 28–36 次高德调用（杭州 11+25、青岛 11+25、苏州 12+16），全部免费额度、0 元，耗时约半分钟；之后 30 分钟内重复点同一组合 0 新增调用。<b>每小时上限 place 40 / walking 80，三城不能在一个小时内暖完，要分两个小时。</b></div>
+    <div class="xk-note"><b>无障碍厕所的真话</b><br>
+      青岛全城查到 25 个无障碍厕所标注点，但这条 4 站路线上只有<b>大学路</b>一站 800 米内有标注（直线 540 米），其余 4 个锚点都没有。所以「照顾走不动的人」不能靠厕所，只能靠路线本身变短——这就是上面那个排序目标改动为什么是主线。</div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const REAL = {
+    杭州: {
+      start: "湖滨公园", startPoi: "湖滨公园（高德实测坐标）", source: "飞猪「文创街区」10 条", cold: "11 + 25 = 36 次",
+      def: { stops: ["大兜路历史文化街区", "桥西直街", "桥西历史街区"], walk: 7759, maxLeg: 5570, legs: null },
+      walk: { stops: ["西湖天地", "南宋御街"], walk: 3223, maxLeg: 1770, legs: null },
+      limits: { seg900: "排不出：最近的两个点之间最短也要 1.45 公里", total3km: "排不出：能凑够 3 站的组合都超过 3 公里" },
+    },
+    苏州: {
+      start: "平江路", startPoi: "平江路（高德实测坐标）", source: "飞猪「文创街区」10 条（4 条被拒）", cold: "12 + 16 = 28 次",
+      def: { stops: ["十全街", "观前街", "石路步行街"], walk: 6893, maxLeg: 2735, legs: null },
+      walk: { stops: ["观前街", "十全街"], walk: 3185, maxLeg: 1970, legs: null },
+      limits: { seg900: "排不出：范围内没有 900 米内的相邻两点", total3km: "排不出：能凑够 3 站的组合都超过 3 公里" },
+    },
+    青岛: {
+      start: "劈柴院", startPoi: "劈柴院·江宁会馆（江宁路 9-10 号，中山路地铁站 D 口步行 260 米）",
+      source: "飞猪「文创街区」10 条（6 条被拒）", cold: "11 + 25 = 36 次",
+      def: {
+        stops: ["劈柴院", "中山路综合商业街", "银鱼巷", "大学路"], walk: 3058, maxLeg: 2157,
+        legs: [["起点 → 劈柴院", 79, 1], ["劈柴院 → 中山路综合商业街", 67, 1], ["中山路综合商业街 → 银鱼巷", 755, 10], ["银鱼巷 → 大学路", 2157, 29]],
+      },
+      walk: {
+        stops: ["劈柴院", "中山路综合商业街"], walk: 146, maxLeg: 79,
+        legs: [["起点 → 劈柴院", 79, 1], ["劈柴院 → 中山路综合商业街", 67, 1]],
+      },
+      limits: { seg900: "3 站 / 901 米：单段最长 755 米，达得到", total3km: "3 站 / 901 米：达得到" },
+      deny: [
+        ["台东小吃街", "确认冲突：高德营业时间 19:00-23:00，假定行程窗口 13:00–17:00 整段在营业时间外"],
+        ["纺织谷", "直线 9.9 公里，超 8 公里步行候选范围，未消耗路径规划调用"],
+        ["李村步行街", "直线 13.5 公里，超范围，未消耗调用"],
+        ["创客公园", "直线 12.7 公里，超范围，未消耗调用"],
+        ["青岛东方影都", "直线 25.7 公里，超范围，未消耗调用"],
+        ["青岛红酒坊特色街", "身份无法确认，不参与已验证路线"],
+      ],
+      datum: "样本 大学路、台东小吃街、纺织谷：按 GCJ-02 比对平均偏差 0 米，按 WGS-84 转换后比对 460 米 → 无需转换",
+      toilet: "全城 25 个无障碍厕所标注点；这条线上只有大学路 540 米（直线）内有 1 个，起点与另外 3 站 800 米内没查到",
+    },
+  };
+
+  const ORDER = ["杭州", "苏州", "青岛"];
+  let city = "青岛", mode = "def", sheetOpen = false, warm = true;
+
+  const el = (id) => document.getElementById(id);
+  const km = (m) => (m >= 1000 ? (m / 1000).toFixed(2) + " 公里" : m + " 米");
+
+  function render() {
+    const d = REAL[city];
+    el("ctxMain").textContent = `${city} · 从${d.start}出发`;
+    el("ctxNote").textContent = warm
+      ? "已有核验缓存：重复点同一组合 0 新增调用"
+      : `本会话还没在这个起点核验过：生成时冷跑约 ${d.cold}`;
+
+    el("chips").innerHTML = ORDER.map((c) => {
+      const on = c === city;
+      return `<button class="xk-chip" data-city="${c}" aria-pressed="${on}">
+        <b>${c}</b><span>${REAL[c].start}${c === "青岛" ? " · 本次新加" : ""}</span></button>`;
+    }).join("");
+
+    el("rowStart").textContent = `${d.start}（预设，不给选）`;
+    el("rowStartPoi").textContent = d.startPoi;
+    el("rowSource").textContent = d.source;
+
+    const cost = el("costLine");
+    if (warm) {
+      cost.className = "xk-cost xk-cost--warm";
+      cost.innerHTML = `已有缓存：这次生成 <b>0 新增高德调用</b>，约 1 秒返回。（真实计数已核对）`;
+    } else {
+      cost.className = "xk-cost xk-cost--cold";
+      cost.innerHTML = `会真实调用高德约 <b>${d.cold}</b>：免费额度、0 元、约半分钟。`
+        + `每小时上限 place 40 / walking 80，三城要在不同小时暖。<b>不会用模拟结果冒充成功。</b>`;
+    }
+
+    const r = d[mode];
+    const legs = r.legs
+      ? r.legs.map(([label, m, min]) => `<div class="xk-leg${m > 1500 ? " xk-leg--far" : ""}">
+            <span>${label}</span><span><b>${km(m)}</b> · 高德步行 ${min} 分</span></div>`).join("")
+      : "";
+    const stops = r.stops.map((n, i) => `<div class="xk-stop"><span class="xk-dot"></span>
+        <span><span class="xk-stop__n">${i + 1}. ${n}</span>
+        <span class="xk-stop__m">停留按产品设定 30 分（模拟值，非实测）</span></span></div>`)
+      .join(`<div style="height:4px"></div>`);
+
+    el("result").innerHTML = `
+      <div class="xk-sum">
+        <div class="xk-sum__big">${r.stops.length} 站 · 全程步行 ${km(r.walk)} · 最长单段 ${km(r.maxLeg)}</div>
+        <div>${mode === "def" ? "当前出货口径：先保站数，再比距离。" : "少走路版（≥2 站下限）：先保证不空手，再比总距离。"}</div>
+        <div class="${r.maxLeg > 1500 ? "xk-warn" : ""}">${
+          r.maxLeg > 1500 ? "注意：中间有一段 " + km(r.maxLeg) + "，是「一口气要走这么多」的真实含义。"
+                          : "最长一段 " + km(r.maxLeg) + "，没有走不动的长段。"}</div>
+      </div>
+      <div style="margin-top:12px;">${stops}${legs}</div>
+      <div style="margin-top:12px;" class="xk-refuse">
+        设了硬上限会怎样（实测）：<br>· 单段 ≤900 米 → ${d.limits.seg900}<br>· 总量 ≤3 公里 → ${d.limits.total3km}
+      </div>`;
+
+    const deny = (d.deny || []).map(([n, why]) => `<li><b>${n}</b>：${why}</li>`).join("");
+    el("denyFold").style.display = d.deny ? "" : "none";
+    el("denyList").innerHTML = deny;
+    if (d.datum) {
+      const extra = `<li><b>坐标系判定</b>：${d.datum}</li><li><b>无障碍厕所</b>：${d.toilet}</li>`;
+      el("denyList").innerHTML = deny + extra;
+    }
+
+    el("modeDefault").setAttribute("aria-pressed", String(mode === "def"));
+    el("modeWalk").setAttribute("aria-pressed", String(mode === "walk"));
+    el("cacheWarm").setAttribute("aria-pressed", String(warm));
+    el("cacheCold").setAttribute("aria-pressed", String(!warm));
+    el("sheet").classList.toggle("xk-hidden", !sheetOpen);
+  }
+
+  el("ctxBtn").onclick = () => { sheetOpen = !sheetOpen; render(); };
+  el("cancelBtn").onclick = () => { sheetOpen = false; render(); };
+  el("okBtn").onclick = () => { sheetOpen = false; render(); };
+  el("chips").onclick = (e) => {
+    const b = e.target.closest("[data-city]"); if (!b) return;
+    city = b.dataset.city; mode = "def"; render();
+  };
+  el("modeDefault").onclick = () => { mode = "def"; render(); };
+  el("modeWalk").onclick = () => { mode = "walk"; render(); };
+  el("cacheWarm").onclick = () => { warm = true; render(); };
+  el("cacheCold").onclick = () => { warm = false; render(); };
+  render();
+})();
+</script>

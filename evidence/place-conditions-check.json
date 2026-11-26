@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-11-25T13:22:28.324Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "script": "place-conditions-check.mjs",
+  "total": 4,
+  "passed": 4,
+  "checks": [
+    {
+      "name": "路线包含「后宰门街」",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "路线不包含「芙蓉街」",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "name": "找不到的地点有明确提示",
+      "ok": true,
+      "detail": "河坊街"
+    },
+    {
+      "name": "全程没有脚本报错",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "pageErrors": []
+}

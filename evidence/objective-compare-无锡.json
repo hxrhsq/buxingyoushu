@@ -1,0 +1,217 @@
+{
+  "checkedAt": "2026-11-22T06:24:12.330Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "city": "无锡",
+  "startKeyword": null,
+  "startName": "清名桥古运河景区南长街",
+  "categories": [
+    "文创街区"
+  ],
+  "paidColdRun": {
+    "place": 11,
+    "walking": 10
+  },
+  "objectivePhaseCalls": {
+    "place": 0,
+    "walking": 0
+  },
+  "baseline": {
+    "stops": 3,
+    "names": [
+      "南长街",
+      "南禅寺步行街",
+      "崇安寺"
+    ],
+    "totalWalkMeters": 3621,
+    "totalWalkMinutes": 48,
+    "totalMinutes": 158,
+    "maxLegMeters": 1871
+  },
+  "attempts": [
+    {
+      "label": "【B1 少走路（bias=walk_less，不设硬上限）】",
+      "revision": 2,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "南长街"
+        ],
+        "totalWalkMeters": 518,
+        "totalWalkMinutes": 7,
+        "totalMinutes": 57,
+        "maxLegMeters": 518
+      },
+      "walkDeltaVsBaseline": -3103,
+      "diffLines": [
+        "v1 → v2：总步行 3.62 公里 → 518 米（少走 3.10 公里，−3.10 公里）",
+        "步行耗时 48 分钟 → 7 分钟（−41 分钟）；总时长 158 分钟 → 57 分钟（少花 101 分钟）",
+        "保留：南长街",
+        "删掉：南禅寺步行街、崇安寺",
+        "路段 南长街 → 南禅寺步行街：本次不再经过",
+        "路段 南禅寺步行街 → 崇安寺：本次不再经过"
+      ]
+    },
+    {
+      "label": "【B2 少走路 + 总量 ≤3 公里】",
+      "revision": 3,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "南长街"
+        ],
+        "totalWalkMeters": 518,
+        "totalWalkMinutes": 7,
+        "totalMinutes": 57,
+        "maxLegMeters": 518
+      },
+      "walkDeltaVsBaseline": 0,
+      "diffLines": [
+        "v2 → v3：总步行 518 米 → 518 米（步行不变 0 米，+0 米）",
+        "步行耗时 7 分钟 → 7 分钟（+0 分钟）；总时长 57 分钟 → 57 分钟（总耗时不变 0 分钟）",
+        "保留：南长街"
+      ]
+    },
+    {
+      "label": "【C1 家庭流现状 + 单段 ≤900 米（目标仍是最多站）】",
+      "ok": false,
+      "code": "no-solution",
+      "route": null,
+      "newAmapCalls": 0,
+      "reason": "按当前条件最多只能排 1 个站（南长街），少于半日游最少需要的 2 站。取消单段上限后能排到 3 站，说明是「一口气最多走 900 米」把站点压掉了。",
+      "explanation": null,
+      "suggestion": null
+    },
+    {
+      "label": "【C2 家庭流现状 + 总量 ≤3 公里（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 2,
+        "names": [
+          "南长街",
+          "南禅寺步行街"
+        ],
+        "totalWalkMeters": 1750,
+        "totalWalkMinutes": 23,
+        "totalMinutes": 103,
+        "maxLegMeters": 1232
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 1750,
+        "totalWalkMinutes": 23,
+        "limit": 3000,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 1232,
+        "segmentLimit": null,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 1750 米，在您定的 3000 米以内。",
+        "whyDropped": [
+          {
+            "id": "8840",
+            "name": "崇安寺",
+            "text": "保留「崇安寺」全程会走到 3621 米，超出你定的 3000 米，所以这次没排它。"
+          }
+        ],
+        "keptBecauseMust": [],
+        "withoutLimit": {
+          "totalWalkMeters": 3621,
+          "totalWalkMinutes": 48,
+          "stopCount": 3
+        },
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    }
+  ],
+  "walkFirst": {
+    "cap": 1750,
+    "stops": 2,
+    "names": [
+      "南长街",
+      "南禅寺步行街"
+    ],
+    "totalWalkMeters": 1750,
+    "totalWalkMinutes": 23,
+    "totalMinutes": 103,
+    "maxLegMeters": 1232,
+    "probes": [
+      {
+        "cap": 1910,
+        "ok": true,
+        "stops": 2,
+        "walk": 1750
+      },
+      {
+        "cap": 1054,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 1482,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 1696,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 1803,
+        "ok": true,
+        "stops": 2,
+        "walk": 1750
+      },
+      {
+        "cap": 1749,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 1776,
+        "ok": true,
+        "stops": 2,
+        "walk": 1750
+      },
+      {
+        "cap": 1762,
+        "ok": true,
+        "stops": 2,
+        "walk": 1750
+      },
+      {
+        "cap": 1755,
+        "ok": true,
+        "stops": 2,
+        "walk": 1750
+      },
+      {
+        "cap": 1752,
+        "ok": true,
+        "stops": 2,
+        "walk": 1750
+      },
+      {
+        "cap": 1750,
+        "ok": true,
+        "stops": 2,
+        "walk": 1750
+      }
+    ]
+  },
+  "counters": {
+    "afterVerify": 71,
+    "end": 71
+  }
+}

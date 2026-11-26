@@ -1,0 +1,247 @@
+{
+  "checkedAt": "2026-11-22T06:46:18.182Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "city": "西安",
+  "startKeyword": null,
+  "startName": "书院门牌坊",
+  "categories": [
+    "文创街区"
+  ],
+  "paidColdRun": {
+    "place": 11,
+    "walking": 38
+  },
+  "objectivePhaseCalls": {
+    "place": 0,
+    "walking": 0
+  },
+  "baseline": {
+    "stops": 4,
+    "names": [
+      "书院门",
+      "德福巷酒吧街",
+      "西安易俗社有限公司",
+      "北院门回坊文化风情街"
+    ],
+    "totalWalkMeters": 2966,
+    "totalWalkMinutes": 39,
+    "totalMinutes": 179,
+    "maxLegMeters": 1349
+  },
+  "attempts": [
+    {
+      "label": "【B1 少走路（bias=walk_less，不设硬上限）】",
+      "revision": 2,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "书院门"
+        ],
+        "totalWalkMeters": 105,
+        "totalWalkMinutes": 1,
+        "totalMinutes": 51,
+        "maxLegMeters": 105
+      },
+      "walkDeltaVsBaseline": -2842,
+      "diffLines": [
+        "v1 → v2：总步行 2.95 公里 → 105 米（少走 2.84 公里，−2.84 公里）",
+        "步行耗时 39 分钟 → 1 分钟（−38 分钟）；总时长 179 分钟 → 51 分钟（少花 128 分钟）",
+        "保留：书院门",
+        "删掉：德福巷酒吧街、北院门回坊文化风情街、西安易俗社有限公司",
+        "路段 书院门 → 德福巷酒吧街：本次不再经过",
+        "路段 德福巷酒吧街 → 北院门回坊文化风情街：本次不再经过",
+        "路段 北院门回坊文化风情街 → 西安易俗社有限公司：本次不再经过"
+      ]
+    },
+    {
+      "label": "【B2 少走路 + 总量 ≤3 公里】",
+      "revision": 3,
+      "status": "pending-review",
+      "route": {
+        "stops": 1,
+        "names": [
+          "书院门"
+        ],
+        "totalWalkMeters": 105,
+        "totalWalkMinutes": 1,
+        "totalMinutes": 51,
+        "maxLegMeters": 105
+      },
+      "walkDeltaVsBaseline": 0,
+      "diffLines": [
+        "v2 → v3：总步行 105 米 → 105 米（步行不变 0 米，+0 米）",
+        "步行耗时 1 分钟 → 1 分钟（+0 分钟）；总时长 51 分钟 → 51 分钟（总耗时不变 0 分钟）",
+        "保留：书院门"
+      ]
+    },
+    {
+      "label": "【C1 家庭流现状 + 单段 ≤900 米（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 2,
+        "names": [
+          "书院门",
+          "德福巷酒吧街"
+        ],
+        "totalWalkMeters": 797,
+        "totalWalkMinutes": 10,
+        "totalMinutes": 90,
+        "maxLegMeters": 692
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 797,
+        "totalWalkMinutes": 10,
+        "limit": null,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 692,
+        "segmentLimit": 900,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 797 米（你没有设走路上限），步行约 10 分钟；最长一段走 692 米，在您定的单段 900 米以内。",
+        "whyDropped": [],
+        "keptBecauseMust": [],
+        "withoutLimit": null,
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    },
+    {
+      "label": "【C2 家庭流现状 + 总量 ≤3 公里（目标仍是最多站）】",
+      "ok": true,
+      "code": null,
+      "route": {
+        "stops": 4,
+        "names": [
+          "书院门",
+          "德福巷酒吧街",
+          "北院门回坊文化风情街",
+          "西安易俗社有限公司"
+        ],
+        "totalWalkMeters": 2947,
+        "totalWalkMinutes": 39,
+        "totalMinutes": 179,
+        "maxLegMeters": 1330
+      },
+      "newAmapCalls": 0,
+      "reason": null,
+      "explanation": {
+        "totalWalkMeters": 2947,
+        "totalWalkMinutes": 39,
+        "limit": 3000,
+        "limitMinutes": null,
+        "withinMinutesLimit": true,
+        "withinLimit": true,
+        "longestSegmentMeters": 1330,
+        "segmentLimit": null,
+        "withinSegmentLimit": true,
+        "verdict": "这条路线全天走 2947 米，在您定的 3000 米以内。",
+        "whyDropped": [],
+        "keptBecauseMust": [],
+        "withoutLimit": {
+          "totalWalkMeters": 2947,
+          "totalWalkMinutes": 39,
+          "stopCount": 4
+        },
+        "stayMinutes": 30,
+        "stayNote": null
+      },
+      "suggestion": null
+    }
+  ],
+  "walkFirst": {
+    "cap": 797,
+    "stops": 2,
+    "names": [
+      "书院门",
+      "德福巷酒吧街"
+    ],
+    "totalWalkMeters": 797,
+    "totalWalkMinutes": 10,
+    "totalMinutes": 90,
+    "maxLegMeters": 692,
+    "probes": [
+      {
+        "cap": 1583,
+        "ok": true,
+        "stops": 2,
+        "walk": 797
+      },
+      {
+        "cap": 891,
+        "ok": true,
+        "stops": 2,
+        "walk": 797
+      },
+      {
+        "cap": 545,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 718,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 804,
+        "ok": true,
+        "stops": 2,
+        "walk": 797
+      },
+      {
+        "cap": 761,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 782,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 793,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 798,
+        "ok": true,
+        "stops": 2,
+        "walk": 797
+      },
+      {
+        "cap": 795,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 796,
+        "ok": false,
+        "stops": 0,
+        "walk": null
+      },
+      {
+        "cap": 797,
+        "ok": true,
+        "stops": 2,
+        "walk": 797
+      }
+    ]
+  },
+  "counters": {
+    "afterVerify": 49,
+    "end": 49
+  }
+}

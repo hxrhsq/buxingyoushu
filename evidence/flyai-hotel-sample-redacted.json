@@ -1,0 +1,54 @@
+{
+  "checkedAt": "2026-11-22T08:06:58.176Z",
+  "command": "flyai \"search-hotel\" \"--dest-name\" \"杭州\" \"--key-words\" \"西湖\"",
+  "paid": true,
+  "flyaiCalls": 1,
+  "durationMs": 60016,
+  "status": 0,
+  "message": "success",
+  "topKeys": [
+    "data",
+    "message",
+    "status",
+    "systemMessage"
+  ],
+  "dataKeys": [
+    "itemList"
+  ],
+  "itemCount": 11,
+  "itemKeys": [
+    "address",
+    "brandName",
+    "commissionMoneyYuan",
+    "decorationTime",
+    "detailUrl",
+    "interestsPoi",
+    "latitude",
+    "longitude",
+    "mainPic",
+    "name",
+    "price",
+    "rate",
+    "shId",
+    "star"
+  ],
+  "commissionKeywordHits": {
+    "commission": 11
+  },
+  "redactedFirstItem": {
+    "address": "定安路68号定安名都A座4楼",
+    "brandName": null,
+    "commissionMoneyYuan": "4.32",
+    "decorationTime": "2026-10-30",
+    "detailUrl": "https://router.feizhu.com/multi/webview?url=‹35位›",
+    "interestsPoi": "近杭州西湖风景名胜区",
+    "latitude": "30.245443",
+    "longitude": "120.166717",
+    "mainPic": "https://img.alicdn.com/imgextra/i3/6000000005113/O1CN01xPgkaxDtpmJ43lbi_!!6000000005113-0-hotel.jpg",
+    "name": "宿乐星球青年酒店(杭州西湖湖滨定安路地铁站店)",
+    "price": "¥70",
+    "rate": "4.00",
+    "shId": "91497363",
+    "star": "经济型"
+  }
+}

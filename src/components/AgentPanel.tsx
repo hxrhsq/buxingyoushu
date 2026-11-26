@@ -1,0 +1,293 @@
+"use client";
+
+import type { AgentController, LiveTurn } from "@/hooks/useAgent";
+
+import type { AgentNarration, ExploreResponse } from "@/lib/types";
+
+const PHASE_BADGE = {
+  idle: { label: "未调用", className: "bg-paper text-ink-300 ring-1 ring-line" },
+  loading: { label: "调用中…", className: "bg-accent-500/15 text-accent-600" },
+  done: { label: "已生成", className: "bg-brand-600/15 text-brand-700" },
+  restored: {
+    label: "上次生成的那一次",
+    className: "bg-brand-600/10 text-brand-700 ring-1 ring-brand-100",
+  },
+} as const;
+
+/**
+ * 到站讲解。默认渲染成独立面板；embedded 模式只输出「讲解结果」本身，
+ * 供站点卡片内嵌使用（标题与站点选择在卡片里已经有了）。
+ */
+export function AgentPanel({
+  agent,
+  stops,
+  embedded = false,
+  forStopId = null,
+  forStopName = null,
+}: {
+  agent: AgentController;
+  stops: { flyaiId: string; name: string; matchStatus: string }[];
+  embedded?: boolean;
+  /** embedded 模式：这一段讲解属于哪一站；不属于当前卡片就不渲染，避免串站 */
+  forStopId?: string | null;
+  forStopName?: string | null;
+}) {
+  const loading = agent.arrived.phase === "loading";
+
+  if (embedded) {
+    // 讲解只挂在它自己那一站下面：选中别的站时这里什么都不显示
+    const mine = agent.arrival?.stopName === forStopName;
+    // 正在生成的这一回合与它的失败提示同样按站归属，否则 A 站的报错会挂到 B 站卡片里
+    const myTurn = forStopId !== null && agent.arrived.stopId === forStopId;
+    const myLoading = loading && myTurn;
+    const myError = myTurn ? agent.arrived.error : null;
+    if (!myLoading && !myError && !mine) return null;
+    return (
+      <div className="mt-2">
+        <ArrivalResult
+          response={!myLoading && mine ? agent.arrival : null}
+          error={myError}
+          loading={myLoading}
+          live={agent.live}
+          canRetry={!myLoading}
+          onRetry={() => agent.arrive(forStopId)}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <section className="rounded-2xl border border-line bg-card p-4 shadow-sm">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <h2 className="text-sm font-semibold text-ink-900">在场探索 · 百炼托管智能体</h2>
+          <p className="mt-1 text-xs leading-relaxed text-ink-500">
+            智能体只负责到站讲解，不改路线；它报出的每个数字都会和高德实测值对账。
+            路线只按你在「调整」页定的条件排。
+          </p>
+        </div>
+        <span className={`shrink-0 rounded-md px-2 py-1 text-[10px] font-medium ${badge(agent).className}`}>
+          {badge(agent).label}
+        </span>
+      </div>
+
+      {stops.length === 0 ? (
+        <p className="mt-3 rounded-xl border border-dashed border-line bg-paper px-3 py-2.5 text-[11px] leading-relaxed text-ink-300">
+          这一层需要「已核实行程」才能工作。请先点「生成我的路线」拿到飞猪＋高德的核验结果；
+          没有核实数据时本面板不会调用百炼，也不会用演示文案冒充成功。
+        </p>
+      ) : (
+        <>
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {stops.map((stop, index) => {
+              const active = stop.flyaiId === agent.selectedStopId;
+              return (
+                <button
+                  key={stop.flyaiId}
+                  type="button"
+                  onClick={() => agent.selectStop(stop.flyaiId)}
+                  disabled={loading}
+                  aria-pressed={active}
+                  className={`rounded-lg px-2.5 py-1.5 text-[11px] font-medium ring-1 transition disabled:cursor-not-allowed disabled:opacity-40 ${
+                    active
+                      ? "bg-brand-700 text-white ring-brand-700"
+                      : "bg-paper text-ink-500 ring-line hover:bg-white"
+                  }`}
+                >
+                  {index + 1}. {stop.name}
+                </button>
+              );
+            })}
+          </div>
+
+          <p className="mt-2 text-[10px] leading-relaxed text-ink-300">
+            先在本面板的站名里选定「当前这一站」，再点「我到了」听讲解。
+            一次点击＝一个真实百炼回合，地图平移缩放不会触发调用。
+          </p>
+        </>
+      )}
+
+      {agent.arrival || agent.arrived.phase === "loading" ? (
+        <ArrivalResult
+          response={agent.arrival}
+          error={agent.arrived.error}
+          loading={agent.arrived.phase === "loading"}
+          live={agent.live}
+          canRetry={agent.canRetryArrive}
+          onRetry={agent.arrive}
+        />
+      ) : (
+        agent.arrived.phase === "done" &&
+        agent.arrived.error && (
+          <Failure
+            text={agent.arrived.error}
+            label="百炼调用失败"
+            canRetry={agent.canRetryArrive}
+            onRetry={agent.arrive}
+          />
+        )
+      )}
+
+    </section>
+  );
+}
+
+function badge(agent: AgentController) {
+  const phases = [agent.arrived.phase];
+  if (phases.includes("loading")) return PHASE_BADGE.loading;
+  const anyDone = phases.includes("done");
+  const anyOk = agent.arrival?.ok;
+  if (anyDone && !anyOk) {
+    return { label: "调用失败", className: "bg-red-500/10 text-red-600" };
+  }
+  if (anyDone && anyOk) return PHASE_BADGE.done;
+  // 刷新之后屏幕上这段是本标签页快照里恢复出来的：真实返回过，但不是这一次点出来的
+  if (agent.restored) return PHASE_BADGE.restored;
+  return PHASE_BADGE.idle;
+}
+
+/* ── 我到了的结果 ───────────────────────────────────────────────── */
+
+function ArrivalResult({
+  response,
+  error,
+  loading,
+  live,
+  canRetry,
+  onRetry,
+}: {
+  response: ExploreResponse | null;
+  error: string | null;
+  loading: boolean;
+  live: LiveTurn;
+  canRetry: boolean;
+  onRetry: () => Promise<void>;
+}) {
+  return (
+    <div className="mt-4 border-t border-line pt-3">
+      <SectionTitle>「我到了」在场讲解</SectionTitle>
+      {loading && <LiveProgress live={live} label="百炼" />}
+      {!loading && !response?.ok && (
+        <Failure
+          text={error ?? response?.error ?? "百炼没有返回可用结果。"}
+          label="失败"
+          canRetry={canRetry}
+          onRetry={onRetry}
+        />
+      )}
+      {response?.ok && response.narration && (
+        <Narration narration={response.narration} stopName={response.stopName ?? ""} />
+      )}
+    </div>
+  );
+}
+
+function Narration({ narration, stopName }: { narration: AgentNarration; stopName: string }) {
+  return (
+    <div className="mt-2 rounded-xl border border-brand-100 bg-brand-50/60 p-3">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="rounded-md bg-brand-700 px-1.5 py-0.5 text-[10px] font-medium text-white">
+          百炼 · 千问
+        </span>
+        <span className="text-[10px] text-ink-300">针对「{stopName}」</span>
+      </div>
+
+      {narration.degraded && (
+        <p className="mt-2 rounded-lg bg-accent-500/10 px-2.5 py-1.5 text-[10px] leading-relaxed text-accent-700">
+          智能体没有按约定的 JSON 格式返回，这里直接展示原文，未经结构化整理。
+        </p>
+      )}
+
+      <h3 className="mt-2 text-sm font-semibold text-ink-900">{narration.headline}</h3>
+
+      {narration.details.length > 0 && (
+        <ul className="mt-2 space-y-1.5">
+          {narration.details.map((item) => (
+            <li key={item} className="flex gap-2 text-xs leading-relaxed text-ink-700">
+              <span className="mt-1.5 size-1 shrink-0 rounded-full bg-brand-500" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {narration.nextSuggestion && (
+        <p className="mt-3 rounded-lg bg-white/70 px-2.5 py-2 text-[11px] leading-relaxed text-ink-700">
+          <span className="font-medium text-brand-700">下一步 · </span>
+          {narration.nextSuggestion}
+        </p>
+      )}
+
+
+    </div>
+  );
+}
+
+
+function SectionTitle({ children }: { children: React.ReactNode }) {
+  return <h3 className="text-[11px] font-medium tracking-wide text-ink-300">{children}</h3>;
+}
+
+/** 真实进度：等了多少秒、流式收到了多少字，出字后原样滚出来。 */
+function LiveProgress({ live, label }: { live: LiveTurn; label: string }) {
+  const chars = live.text.length;
+  return (
+    <div className="mt-2 rounded-xl border border-dashed border-brand-100 bg-brand-50/40 px-3 py-2">
+      <p className="flex flex-wrap items-center gap-2 text-[11px] text-ink-500">
+        <span className="size-2.5 animate-spin rounded-full border-2 border-brand-500 border-t-transparent" />
+        {label} · 已等 {(live.waitedMs / 1000).toFixed(1)} 秒 ·{" "}
+        {chars === 0 ? "百炼这一轮还没开始出字" : `已流式收到 ${chars} 字`}
+      </p>
+      {chars > 0 && (
+        <>
+          <p className="mt-1 text-[10px] leading-relaxed text-ink-300">
+            以下是智能体正在生成的原始文字，未经服务端校验，不作为结论；校验通过的结果会在下方单独给出。
+          </p>
+          <pre className="mt-1 max-h-32 overflow-y-auto whitespace-pre-wrap break-words rounded-lg bg-white/70 px-2 py-1.5 font-mono text-[10px] leading-relaxed text-ink-500">
+            {live.text}
+          </pre>
+        </>
+      )}
+    </div>
+  );
+}
+
+/**
+ * 失败原文照实展示，不粉饰；重试只在失败态出现，且必须由用户主动点击。
+ * 一个回合＝一次付费调用，所以这里不用自动重试，也不在按钮上叠加并发。
+ */
+function Failure({
+  text,
+  label,
+  canRetry,
+  onRetry,
+}: {
+  text: string;
+  label: string;
+  canRetry?: boolean;
+  onRetry?: () => Promise<void>;
+}) {
+  return (
+    <div className="mt-2 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-[11px] leading-relaxed text-red-700">
+      <p>
+        <span className="font-medium">{label} · </span>
+        {text}
+      </p>
+      {canRetry && onRetry && (
+        <>
+          <button
+            type="button"
+            onClick={() => void onRetry()}
+            className="mt-2 rounded-lg bg-red-600 px-3 py-1.5 text-[11px] font-semibold text-white transition hover:bg-red-500"
+          >
+            重试这一步
+          </button>
+          <p className="mt-1.5 text-[10px] leading-relaxed text-red-600/80">
+            重试会重新发起一个百炼回合；刚才那次没有成功，所以既没有标记到达，也没有改动路线，
+            再点一次不会把同一步走两遍。
+          </p>
+        </>
+      )}
+    </div>
+  );
+}
