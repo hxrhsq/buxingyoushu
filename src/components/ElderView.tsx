@@ -49,7 +49,7 @@ export function ElderView({
   const legs = itinerary?.legs ?? [];
   const totalMin = itinerary ? itinerary.totalWalkMinutes + itinerary.totalStayMinutes + itinerary.bufferMinutes : 0;
   const longest = legs.length ? Math.max(...legs.map((leg) => leg.distanceMeters)) : 0;
-  const overLimit = limitMinutes !== null && itinerary !== null && itinerary.totalMinutes > limitMinutes;
+  const overLimit = limitMinutes !== null && itinerary !== null && itinerary.totalWalkMinutes > limitMinutes;
   const overSegment = segmentLimitMeters !== null && longest > segmentLimitMeters;
 
   const px = (base: number) => `${Math.round(base * scale)}px`;
@@ -116,8 +116,8 @@ export function ElderView({
                   style={{ fontSize: px(22), lineHeight: 1.6 }}
                 >
                   {overLimit
-                    ? `注意：这条路要走的时间超过了说好的 ${minutesLabel(limitMinutes)}。`
-                    : `没有超过说好的 ${minutesLabel(limitMinutes)}。`}
+                    ? `注意：从头到尾走路大约 ${itinerary.totalWalkMinutes} 分钟，超过了说好的 ${minutesLabel(limitMinutes)}。`
+                    : `从头到尾走路没有超过说好的 ${minutesLabel(limitMinutes)}。`}
                 </p>
               )}
               {segmentLimitMeters !== null && (
