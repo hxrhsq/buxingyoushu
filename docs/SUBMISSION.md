@@ -249,7 +249,7 @@ Next.js 16（App Router + Turbopack）· React 19 · TypeScript · Tailwind CSS 
 
 ![酒店卡](https://raw.githubusercontent.com/hxrhsq/buxingyoushu/main/evidence/hotel-card.png)
 
-**演示视频**：录制中，提交前补入本节。
+**演示视频**（90 秒，竖屏，全程真实界面录屏）：https://bxys.peiqirui.com/demo-video.mp4 ——从说需求、生成路线（总步行 13 分钟 / 总行程 2 小时 33 分）、点「我到了」听到达讲解、切给爸妈看的大字版，到收紧单段上限后重排（界面明示「高德调用 0 次」）的完整实录。
 
 ---
 
